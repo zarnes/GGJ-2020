@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class ObjectFactory : MonoBehaviour
 {
+    public static ObjectFactory Instance;
+
     // TODO: remove this logic when other components are setup
     [SerializeField]
     private GameObject SampleObject;
-    
+
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
     void Start()
     {
-        
     }
 
     void Update()
     {
-        // TODO: remove this logic when other components are setup
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-            {
-                GenerateObject(hit.point);
-            }
-                
-        }
+
     }
 
-    void GenerateObject(Vector3 objWorldPosition)
+    public void GenerateObject(Vector3 objWorldPosition)
     {
         GridSystem gSysteme;
         Vector2Int gPos;
@@ -36,11 +39,11 @@ public class ObjectFactory : MonoBehaviour
         if (GridManager.Instance.GetGridCoords(objWorldPosition, out gSysteme, out gPos))
         {
             Vector3 worldGridCellPos = gSysteme.GridToWorld(gPos);
-            Quaternion sampleRotation = Quaternion.Euler(-90f, 0f, 0f);
-            GameObject.Instantiate(SampleObject, worldGridCellPos, sampleRotation);
+            Quaternion sampleOverrideRotation = Quaternion.Euler(-90f, 0f, 0f);
+            GameObject obj = GameObject.Instantiate(SampleObject, worldGridCellPos, sampleOverrideRotation);
 
-            print("Grid type : " + gSysteme.Inventory.Type);
-            print("gPos : " + gPos);
+            // TODO: Check return value when using this
+            gSysteme.Inventory.AddObject(obj.GetComponent<GridObject>(), gPos);
         }
     }
 }

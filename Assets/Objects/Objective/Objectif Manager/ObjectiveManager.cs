@@ -6,13 +6,15 @@ public class ObjectiveManager : MonoBehaviour
 {
     public List<ObjectiveSlot> ObjectivesSlots;
     public GameObject ObjectiveFeedbackPrefab;
-    
+
+    public int ActiveObjectives { get; private set; }
+
     public void LoadConfiguration(LevelConfiguration configuration)
     {
         // Spawn tutorial objective
         SpawnObjective(configuration.Objectives[0]);
     }
-
+    
     public bool SpawnObjective(ObjectiveConfiguration configuration)
     {
         foreach(ObjectiveSlot slot in ObjectivesSlots)
@@ -28,6 +30,8 @@ public class ObjectiveManager : MonoBehaviour
             slot.Configuration = configuration;
             slot.Occupied = true;
             slot.Feedback = of;
+
+            ++ActiveObjectives;
 
             return true;
         }
@@ -50,6 +54,8 @@ public class ObjectiveManager : MonoBehaviour
                 Destroy(slot.Feedback.gameObject);
                 slot.Occupied = false;
                 slot.Configuration = null;
+
+                --ActiveObjectives;
             }
         }
 

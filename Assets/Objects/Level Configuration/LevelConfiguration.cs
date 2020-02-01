@@ -7,6 +7,10 @@ public class LevelConfiguration : ScriptableObject
 {
     public int LevelTime = 120;
 
+    public float RespawnTime = 15;
+    public float TimeDecreasePerPerfect = 3;
+    public float MinimumRespawnTime = 5;
+
     public List<StockItemConfiguration> ItemsInStock;
     public List<ObjectiveConfiguration> Objectives;
 }

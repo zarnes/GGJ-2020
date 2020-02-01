@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,18 @@ public class GridInventory : MonoBehaviour
         if (removed && destroy)
             Destroy(gObj.gameObject);
         return removed;
+    }
+
+    internal void FlushItems()
+    {
+        Debug.Log("Flushing " + _objects.Count + " items in grid inventory " + name, gameObject);
+        if (_objects.Count <= 0)
+            return;
+
+        for (int i = _objects.Count - 1; i >= 0; --i)
+        {
+            RemoveObject(_objects[i], true);
+        }
     }
 
     public bool StartMove(GridObject gObj)
@@ -89,7 +102,7 @@ public class GridInventory : MonoBehaviour
         gObj.Position = coords;
         return true;
     }
-
+    
     public GridObject GetObject(Vector2Int coords)
     {
         foreach(GridObject gObj in _objects)
@@ -132,6 +145,11 @@ public class GridInventory : MonoBehaviour
     public bool HasObject(GridObject gObj)
     {
         return _objects.Contains(gObj);
+    }
+
+    public GridObject GetObjectWithData(GridObjectData data)
+    {
+        return _objects.Find(o => o.Data == data);
     }
 
     public enum GridType

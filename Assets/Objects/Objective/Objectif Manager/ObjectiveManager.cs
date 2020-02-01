@@ -19,14 +19,38 @@ public class ObjectiveManager : MonoBehaviour
         {
             if (slot.Occupied)
                 continue;
+            
+            GameObject feedbackGo = Instantiate(ObjectiveFeedbackPrefab, transform);
+            ObjectiveFeedback of = feedbackGo.GetComponent<ObjectiveFeedback>();
+            of.Init(configuration);
+            feedbackGo.transform.position = transform.position + new Vector3(slot.Position.x, slot.Position.y);
 
             slot.Configuration = configuration;
             slot.Occupied = true;
-            GameObject feedbackGo = Instantiate(ObjectiveFeedbackPrefab);
-            feedbackGo.GetComponent<ObjectiveFeedback>().Init(configuration);
+            slot.Feedback = of;
+
             return true;
         }
         return false;
+    }
+
+    public void ValidateObjectives(GridInventory outputInventory)
+    {
+        foreach(ObjectiveSlot slot in ObjectivesSlots)
+        {
+            GridObject gObj = outputInventory.GetObjectWithData(slot.Configuration.Object);
+            if (gObj != null)
+            {
+                Debug.Log("Completed objective for item " + gObj.name);
+                outputInventory.RemoveObject(gObj, true);
+
+                Destroy(slot.Feedback.gameObject);
+                slot.Occupied = false;
+                slot.Configuration = null;
+            }
+        }
+
+        outputInventory.FlushItems();
     }
 
     private void OnDrawGizmosSelected()
@@ -46,7 +70,10 @@ public class ObjectiveManager : MonoBehaviour
 public class ObjectiveSlot
 {
     public Vector2 Position;
-    internal bool Occupied;
-    internal ObjectiveConfiguration Configuration;
-    internal float TimeLeft;
+    [ReadOnly]
+    public bool Occupied;
+    [ReadOnly]
+    public ObjectiveConfiguration Configuration;
+    
+    internal ObjectiveFeedback Feedback;
 }

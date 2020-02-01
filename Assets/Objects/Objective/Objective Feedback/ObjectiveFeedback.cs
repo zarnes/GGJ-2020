@@ -10,6 +10,6 @@ public class ObjectiveFeedback : MonoBehaviour
     public void Init(ObjectiveConfiguration configuration)
     {
         _configuration = configuration;
-        name = configuration.Object.name;
+        name = "Objective : " + configuration.Object.name;
     }
 }

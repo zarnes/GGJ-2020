@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class GridSystem : MonoBehaviour
 {
-    internal static GridSystem Instance;
-
-    public Vector2 GridSize;
+    public Vector2Int GridSize;
     public Vector2 CellSize;
 
     public Vector2Int MouseCoords;
     private Camera _cam;
 
+    public GridInventory Inventory { get; private set; }
+
     // Start is called before the first frame update
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        Inventory = GetComponent<GridInventory>();
     }
 
     // Update is called once per frame
@@ -39,7 +33,12 @@ public class GridSystem : MonoBehaviour
     {
         worldCoords -= transform.position;
         worldCoords /= CellSize;
-        return new Vector2Int((int)worldCoords.x, (int)worldCoords.y);
+        Vector2Int coords = new Vector2Int((int)worldCoords.x, (int)worldCoords.y);
+
+        if (coords.x < 0 || coords.x >= GridSize.x || coords.y < 0 || coords.y >= GridSize.y)
+            coords = new Vector2Int(-1, -1);
+
+        return coords;
     }
 
     public Vector3 GridToWorld(Vector2Int gridCoords)
@@ -48,7 +47,14 @@ public class GridSystem : MonoBehaviour
         return worldCoord + transform.position + new Vector3(CellSize.x * .5f, CellSize.y * .5f);
     }
 
-    private void OnDrawGizmosSelected()
+    public bool IsCoordValid(Vector2Int gridCoords)
+    {
+        if (gridCoords.x < 0 || gridCoords.x >= GridSize.x || gridCoords.y < 0 || gridCoords.y >= GridSize.y)
+            return false;
+        return true;
+    }
+
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.gray;
         for (int x = 0; x < GridSize.x; ++x)

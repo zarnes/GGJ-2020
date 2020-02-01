@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CooldownManager : MonoBehaviour
 {
+    [SerializeField]
     private SpriteMask mask;
 
     private bool IsStarted;
@@ -40,6 +41,7 @@ public class CooldownManager : MonoBehaviour
             {
                 IsFinished = true;
                 OnFinish?.Invoke();
+                this.enabled = false;
             }
             
         }

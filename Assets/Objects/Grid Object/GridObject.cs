@@ -6,16 +6,26 @@ public class GridObject : MonoBehaviour
 {
     public List<Vector2Int> CoordinatesUsed;
     public Vector2Int Position;
+    private float TimeToDestroy;
 
     public Vector3 initialDragPosition;
     
     public GridObjectData Data { get; private set; }
 
+    [SerializeField]
+    private CooldownManager cdMng;
+    
     public void InitializeFromDataFile(GridObjectData data)
     {
         Data = data;
         CoordinatesUsed = data.CoordinatesUsed;
         gameObject.name = data.name;
+    }
+
+    public void LaunchTrashCooldown()
+    {
+        cdMng.enabled = true;
+        cdMng.Launch(TimeToDestroy);
     }
 
     void OnMouseDown()
@@ -24,9 +34,6 @@ public class GridObject : MonoBehaviour
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
         gSystem.Inventory.StartMove(this);
-
-        CooldownManager cdMng = gameObject.AddComponent<CooldownManager>();
-        cdMng.Launch(10f);
     }
 
     public void OnMouseDrag()

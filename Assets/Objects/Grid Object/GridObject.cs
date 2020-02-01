@@ -6,26 +6,33 @@ public class GridObject : MonoBehaviour
 {
     public List<Vector2Int> CoordinatesUsed;
     public Vector2Int Position;
-    private float TimeToDestroy;
+    public float TimeToDestroy;
 
     public Vector3 initialDragPosition;
     
     public GridObjectData Data { get; private set; }
 
     [SerializeField]
-    private CooldownManager cdMng;
+    public CooldownManager cdMng;
     
     public void InitializeFromDataFile(GridObjectData data)
     {
         Data = data;
         CoordinatesUsed = data.CoordinatesUsed;
+        TimeToDestroy = data.TimeToDestroy;
         gameObject.name = data.name;
     }
 
-    public void LaunchTrashCooldown()
+    public void LaunchTrashCooldownFeedback()
     {
-        cdMng.enabled = true;
+        cdMng.gameObject.SetActive(true);
         cdMng.Launch(TimeToDestroy);
+    }
+
+    public void CancelTrashCooldown()
+    {
+        cdMng.Stop();
+        cdMng.gameObject.SetActive(false);
     }
 
     void OnMouseDown()

@@ -9,8 +9,7 @@ public class InputController : MonoBehaviour
 
     public GridObjectData A;
     public GridObjectData B;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         bottomColliderMask = LayerMask.NameToLayer("BottomCollider");
@@ -36,12 +35,12 @@ public class InputController : MonoBehaviour
                 {
                     if (Input.GetMouseButtonDown(1))
                     {
-                        print(hit.transform.gameObject.GetComponent<GridObject>().Position);
-                        hit.transform.gameObject.GetComponent<GridObject>().LaunchTrashCooldown();
+                        GridObject obj = hit.transform.gameObject.GetComponent<GridObject>();
+                        obj.LaunchTrashCooldownFeedback();
+                        ObjectFactory.Instance.BeginTrashObject(obj);
                     }
                 }
             }
-
         }
     }
 }

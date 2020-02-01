@@ -11,6 +11,7 @@ public class CooldownManager : MonoBehaviour
     private bool IsFinished;
 
     private float duration;
+    private float value;
     private float EndTime;
     
     public delegate void CooldownAction();
@@ -31,17 +32,27 @@ public class CooldownManager : MonoBehaviour
         OnStart?.Invoke();
     }
 
+    public void Stop()
+    {
+        IsStarted = false;
+        EndTime = 0f;
+    }
+
     void Update()
     {
         if (IsStarted && !IsFinished)
         {
-            if (EndTime + Mathf.Epsilon >= Time.time)
-                mask.alphaCutoff = Mathf.Clamp01(duration - (EndTime - Time.time));
+            value += Time.deltaTime;
+
+            float clampedValue = Mathf.Clamp(value, 0f, duration);
+            
+            if (EndTime >= Time.time)
+                mask.alphaCutoff = clampedValue / duration;
             else
             {
                 IsFinished = true;
                 OnFinish?.Invoke();
-                this.enabled = false;
+                //this.enabled = false;
             }
             
         }

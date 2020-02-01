@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fc9ad087a143946a0ddc349c9c6ae8, type: 3}
   m_Name: 01 Tutorial
   m_EditorClassIdentifier: 
-  LevelTime: 120
+  LevelTime: 5
+  RespawnTime: 15
+  TimeDecreasePerPerfect: 3
+  MinimumRespawnTime: 5
   ItemsInStock:
   - Position: {x: 0, y: 0}
     Object: {fileID: 11400000, guid: c54046af07e48784f9c844d0234d7dde, type: 2}

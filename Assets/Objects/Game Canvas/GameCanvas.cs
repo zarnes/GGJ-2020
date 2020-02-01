@@ -23,6 +23,10 @@ public class GameCanvas : MonoBehaviour
     private Text TimerText;
     [SerializeField]
     private Animator TimerAnimator;
+    [SerializeField]
+    private Gradient TimerColor;
+
+    public EndPanel EndPanel;
 
     private int lastTimerDisplayed;
 
@@ -56,7 +60,7 @@ public class GameCanvas : MonoBehaviour
         ScrollAnimator.SetBool("Show", false);
     }
 
-    internal void UpdateTimer(float timeRemaining, bool animate = true)
+    internal void UpdateTimer(float timeRemaining, float percentage, bool animate = true)
     {
         if ((int)timeRemaining == lastTimerDisplayed)
             return;
@@ -74,5 +78,12 @@ public class GameCanvas : MonoBehaviour
         TimerText.text = minutes + ":" + seconds;
         if (animate)
             TimerAnimator.SetTrigger("Wobble");
+
+        TimerText.color = TimerColor.Evaluate(percentage);
+    }
+
+    internal void EndGame(int score, bool haveNextLevel)
+    {
+        EndPanel.Show(score, haveNextLevel);
     }
 }

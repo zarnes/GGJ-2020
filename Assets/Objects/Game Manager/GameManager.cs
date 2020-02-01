@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public LevelConfiguration LevelConfiguration;
+    private LevelConfiguration _levelConfiguration;
 
     [Space]
     public ObjectiveManager ObjectiveManager;
@@ -20,17 +20,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentRespawnTime = LevelConfiguration.RespawnTime;
+        _levelConfiguration = LevelManager.Instance.CurrentLevel;
+
+        _currentRespawnTime = _levelConfiguration.RespawnTime;
         _nextSpawn = _currentRespawnTime;
-        ObjectiveManager.LoadConfiguration(LevelConfiguration);
-        TimeRemaining = LevelConfiguration.LevelTime;
-        GameCanvas.UpdateTimer(TimeRemaining, false);
+        ObjectiveManager.LoadConfiguration(_levelConfiguration);
+        TimeRemaining = _levelConfiguration.LevelTime;
+        GameCanvas.UpdateTimer(TimeRemaining, 0, false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameCanvas.UpdateTimer(TimeRemaining);
+        GameCanvas.UpdateTimer(TimeRemaining, 1 - TimeRemaining / _levelConfiguration.LevelTime);
 
         if (_firstObjectiveFinished)
         {
@@ -41,11 +43,11 @@ public class GameManager : MonoBehaviour
         if (ObjectiveManager.ActiveObjectives == 0)
         {
             // Objectives spawn faster if the objective is completed more quickly
-            if (_firstObjectiveFinished && _currentRespawnTime > LevelConfiguration.MinimumRespawnTime)
+            if (_firstObjectiveFinished && _currentRespawnTime > _levelConfiguration.MinimumRespawnTime)
             {
-                _currentRespawnTime -= LevelConfiguration.TimeDecreasePerPerfect;
-                if (_currentRespawnTime < LevelConfiguration.MinimumRespawnTime)
-                    _currentRespawnTime = LevelConfiguration.MinimumRespawnTime;
+                _currentRespawnTime -= _levelConfiguration.TimeDecreasePerPerfect;
+                if (_currentRespawnTime < _levelConfiguration.MinimumRespawnTime)
+                    _currentRespawnTime = _levelConfiguration.MinimumRespawnTime;
             }
             else if (!_firstObjectiveFinished)
                 _firstObjectiveFinished = true;
@@ -61,13 +63,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("TIME OUT");
             gameObject.SetActive(false);
+            GameCanvas.EndGame(345, LevelManager.Instance.HasNextLevel(_levelConfiguration));
         }
     }
 
     private void SpawnRandomObjective()
     {
-        int rndIndex = Random.Range(0, LevelConfiguration.Objectives.Count - 1);
-        ObjectiveConfiguration config = LevelConfiguration.Objectives[rndIndex];
+        int rndIndex = Random.Range(0, _levelConfiguration.Objectives.Count - 1);
+        ObjectiveConfiguration config = _levelConfiguration.Objectives[rndIndex];
         ObjectiveManager.SpawnObjective(config);
         _nextSpawn = _currentRespawnTime;
     }

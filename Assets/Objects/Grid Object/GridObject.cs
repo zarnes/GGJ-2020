@@ -51,10 +51,9 @@ public class GridObject : MonoBehaviour
         GridSystem gSystem;
         Vector2Int gCoords;
 
-        if (GridManager.Instance.GetGridCoords(transform.position, out gSystem, out gCoords))
+        if (GridManager.Instance.GetGridCoords(transform.position, out gSystem, out gCoords) && gSystem.Inventory.Type != GridInventory.GridType.Input)
         {
             Vector3 worldPos = gSystem.GridToWorld(gCoords);
-
             transform.position = gSystem.Inventory.EndMove(gCoords) ? worldPos : initialDragPosition;
         }
         else

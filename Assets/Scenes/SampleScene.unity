@@ -978,11 +978,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8196025976064544660, guid: 9d11df1ecc9e159408b9714d4daa4c71,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d11df1ecc9e159408b9714d4daa4c71, type: 3}
 --- !u!1001 &7113916398191595887
@@ -992,12 +987,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 413422362301649045, guid: 1aa130edea08bff40b362228ce8c164d,
-        type: 3}
-      propertyPath: SampleObject
-      value: 
-      objectReference: {fileID: 8260910040569133456, guid: 11d0c71e65f105142b2730358084796f,
-        type: 3}
     - target: {fileID: 3526219175700948000, guid: 1aa130edea08bff40b362228ce8c164d,
         type: 3}
       propertyPath: m_LocalPosition.x

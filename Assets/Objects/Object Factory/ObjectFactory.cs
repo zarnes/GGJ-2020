@@ -6,6 +6,10 @@ public class ObjectFactory : MonoBehaviour
 {
     public static ObjectFactory Instance;
 
+    private bool IsObjectBeingTrash = false;
+    private GridObject ObjectBeingTrash = null;
+    private float ObjectTrashTimer = 0f;
+
     void Awake()
     {
         if (Instance != null)
@@ -15,6 +19,14 @@ public class ObjectFactory : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(1) && IsObjectBeingTrash)
+        {
+            CancelTrashObject();
+        }
     }
     
     public void GenerateObject(Vector3 objWorldPosition, GridObjectData data, bool ignoreCollide = false)
@@ -34,5 +46,45 @@ public class ObjectFactory : MonoBehaviour
             // TODO: Check return value when using this
             gSysteme.Inventory.AddObject(obj.GetComponent<GridObject>(), gPos, ignoreCollide);
         }
+    }
+
+    public void DeleteCurrentTrashObject()
+    {
+        GridInventory gInventory;
+        gInventory = GridManager.Instance.FindGridWithObject(ObjectBeingTrash);
+
+        if (gInventory)
+        {
+            if (!gInventory.RemoveObject(ObjectBeingTrash, true))
+                Debug.LogError("Cannot find the item to delete on grid array");
+        }
+        else
+            Debug.LogError("You have try to delete object that doesn't exist on this grid anymore");
+
+        IsObjectBeingTrash = false;
+        ObjectBeingTrash = null;
+        ObjectTrashTimer = 0f;
+    }
+
+    public void BeginTrashObject(GridObject obj)
+    {
+        ObjectBeingTrash = obj;
+
+        ObjectBeingTrash.cdMng.OnFinish += DeleteCurrentTrashObject;
+
+        ObjectTrashTimer = Time.time + ObjectBeingTrash.TimeToDestroy;
+        IsObjectBeingTrash = true;
+        ObjectBeingTrash.LaunchTrashCooldownFeedback();
+    }
+
+    public void CancelTrashObject()
+    {
+        IsObjectBeingTrash = false;
+
+        ObjectBeingTrash.cdMng.OnFinish -= DeleteCurrentTrashObject;
+
+        ObjectBeingTrash.CancelTrashCooldown();
+        ObjectBeingTrash = null;
+        ObjectTrashTimer = 0f;
     }
 }

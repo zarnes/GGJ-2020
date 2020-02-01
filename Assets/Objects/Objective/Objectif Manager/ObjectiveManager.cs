@@ -51,9 +51,10 @@ public class ObjectiveManager : MonoBehaviour
                 Debug.Log("Completed objective for item " + gObj.name);
                 outputInventory.RemoveObject(gObj, true);
 
-                Destroy(slot.Feedback.gameObject);
+                slot.Feedback.Complete();
                 slot.Occupied = false;
                 slot.Configuration = null;
+                slot.Feedback = null;
 
                 --ActiveObjectives;
             }

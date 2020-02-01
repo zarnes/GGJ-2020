@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 
     [Space]
     public ObjectiveManager ObjectiveManager;
+    public GameCanvas GameCanvas;
 
-    public bool _firstObjectiveFinished = false;
+    private bool _firstObjectiveFinished = false;
     [SerializeField][ReadOnly]
     private float TimeRemaining;
     [SerializeField][ReadOnly]
@@ -22,11 +23,15 @@ public class GameManager : MonoBehaviour
         _currentRespawnTime = LevelConfiguration.RespawnTime;
         _nextSpawn = _currentRespawnTime;
         ObjectiveManager.LoadConfiguration(LevelConfiguration);
+        TimeRemaining = LevelConfiguration.LevelTime;
+        GameCanvas.UpdateTimer(TimeRemaining, false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameCanvas.UpdateTimer(TimeRemaining);
+
         if (_firstObjectiveFinished)
         {
             TimeRemaining -= Time.deltaTime;

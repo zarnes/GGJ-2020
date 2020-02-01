@@ -17,4 +17,10 @@ public class ObjectiveFeedback : MonoBehaviour
     {
         GameCanvas.Instance.OpenScroll(_configuration);
     }
+
+    public void Complete()
+    {
+        GetComponentInChildren<Animator>().SetTrigger("Destroy");
+        Destroy(gameObject, 2f);
+    }
 }

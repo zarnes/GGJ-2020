@@ -45,3 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelConfiguration: {fileID: 11400000, guid: e486a18aa0fbe96428398da112a9bcbf, type: 2}
   ObjectiveManager: {fileID: 0}
+  GameCanvas: {fileID: 0}
+  TimeRemaining: 0
+  _nextSpawn: 0

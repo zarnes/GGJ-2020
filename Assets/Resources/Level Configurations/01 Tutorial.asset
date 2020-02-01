@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: 01 Tutorial
   m_EditorClassIdentifier: 
   ItemsInStock: []
-  Objectives: []
+  Objectives:
+  - Object: {fileID: 11400000, guid: 20ab56dac44cd0e4a85393d15a9629c6, type: 2}

@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     public ObjectiveManager ObjectiveManager;
 
     public bool _firstObjectiveFinished = false;
-    public float TimeRemaining;
-
-    public float _nextSpawn;
-    public float _currentRespawnTime;
+    [SerializeField][ReadOnly]
+    private float TimeRemaining;
+    [SerializeField][ReadOnly]
+    private float _nextSpawn;
+    private float _currentRespawnTime;
 
     // Start is called before the first frame update
     void Start()

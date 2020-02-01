@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Object Data Output
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8260910040569133456, guid: 11d0c71e65f105142b2730358084796f, type: 3}
-  CoordinatesUsed: []
+  CoordinatesUsed:
+  - {x: 0, y: 0}
+  TimeToDestroy: 0
+  IsDestroyable: 0

@@ -40,7 +40,8 @@ public class RecipeManager : MonoBehaviour
                 Debug.LogError("Error in object index configuration for output (" + output.InputObjectIndex + ")", validRecipe);
                 return false;
             }
-
+            
+            // TODO add relative position
             ObjectFactory.Instance.GenerateObject(inputObject.transform.position, output.Object, true);
         }
 

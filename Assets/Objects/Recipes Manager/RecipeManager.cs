@@ -40,7 +40,8 @@ public class RecipeManager : MonoBehaviour
                 Debug.LogError("Error in object index configuration for output (" + output.InputObjectIndex + ")", validRecipe);
                 return false;
             }
-
+            
+            // TODO add relative position
             ObjectFactory.Instance.GenerateObject(inputObject.transform.position, output.Object, true);
         }
 
@@ -61,8 +62,7 @@ public class RecipeManager : MonoBehaviour
                 GridSystem grid;
                 Vector2Int gCoords;
                 GridManager.Instance.GetGridCoords(gObj.transform.position, out grid, out gCoords);
-                grid.Inventory.RemoveObject(gObj);
-                //Destroy(gObj.gameObject);
+                grid.Inventory.RemoveObject(gObj, true);
             }
             else if (input.Behavior == RecipeInput.CraftBehavior.PlaceBack)
             {

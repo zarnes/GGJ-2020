@@ -33,6 +33,10 @@ public class GridSystem : MonoBehaviour
     {
         worldCoords -= transform.position;
         worldCoords /= CellSize;
+
+        if (worldCoords.x < 0 || worldCoords.y < 0)
+            return new Vector2Int(-1, -1);
+
         Vector2Int coords = new Vector2Int((int)worldCoords.x, (int)worldCoords.y);
 
         if (coords.x < 0 || coords.x >= GridSize.x || coords.y < 0 || coords.y >= GridSize.y)

@@ -1,0 +1,82 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObjectiveManager : MonoBehaviour
+{
+    public List<ObjectiveSlot> ObjectivesSlots;
+    public GameObject ObjectiveFeedbackPrefab;
+    
+    public void LoadConfiguration(LevelConfiguration configuration)
+    {
+        // Spawn tutorial objective
+        SpawnObjective(configuration.Objectives[0]);
+    }
+
+    public bool SpawnObjective(ObjectiveConfiguration configuration)
+    {
+        foreach(ObjectiveSlot slot in ObjectivesSlots)
+        {
+            if (slot.Occupied)
+                continue;
+            
+            GameObject feedbackGo = Instantiate(ObjectiveFeedbackPrefab, transform);
+            ObjectiveFeedback of = feedbackGo.GetComponent<ObjectiveFeedback>();
+            of.Init(configuration);
+            feedbackGo.transform.position = transform.position + new Vector3(slot.Position.x, slot.Position.y);
+
+            slot.Configuration = configuration;
+            slot.Occupied = true;
+            slot.Feedback = of;
+
+            return true;
+        }
+        return false;
+    }
+
+    public void ValidateObjectives(GridInventory outputInventory)
+    {
+        foreach(ObjectiveSlot slot in ObjectivesSlots)
+        {
+            if (!slot.Occupied)
+                continue;
+
+            GridObject gObj = outputInventory.GetObjectWithData(slot.Configuration.Object);
+            if (gObj != null)
+            {
+                Debug.Log("Completed objective for item " + gObj.name);
+                outputInventory.RemoveObject(gObj, true);
+
+                Destroy(slot.Feedback.gameObject);
+                slot.Occupied = false;
+                slot.Configuration = null;
+            }
+        }
+
+        outputInventory.FlushItems();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        foreach(ObjectiveSlot objective in ObjectivesSlots)
+        {
+            Vector3 position = transform.position;
+            position += new Vector3(objective.Position.x, objective.Position.y);
+            Gizmos.DrawWireSphere(position, .5f);
+        }
+    }
+}
+
+[System.Serializable]
+public class ObjectiveSlot
+{
+    public Vector2 Position;
+    [ReadOnly]
+    public bool Occupied;
+    [ReadOnly]
+    public ObjectiveConfiguration Configuration;
+    
+    internal ObjectiveFeedback Feedback;
+}

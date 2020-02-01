@@ -9,9 +9,13 @@ public class GridObject : MonoBehaviour
 
     public Vector3 initialDragPosition;
 
+    public GridObjectData Data { get; private set; }
+
     public void InitializeFromDataFile(GridObjectData data)
     {
+        Data = data;
         CoordinatesUsed = data.CoordinatesUsed;
+        gameObject.name = data.name;
     }
 
     void OnMouseDown()

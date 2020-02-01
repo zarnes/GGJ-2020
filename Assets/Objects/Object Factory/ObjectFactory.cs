@@ -7,9 +7,13 @@ public class ObjectFactory : MonoBehaviour
     public static ObjectFactory Instance;
 
     // TODO: remove this logic when other components are setup
-    [SerializeField]
+    /*[SerializeField]
     private GameObject SampleObject;
-
+    [SerializeField]
+    private GameObject SampleObjectB;
+    [SerializeField]
+    private GameObject SampleObjectC;
+    private int index;*/
 
     void Awake()
     {
@@ -21,17 +25,8 @@ public class ObjectFactory : MonoBehaviour
 
         Instance = this;
     }
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void GenerateObject(Vector3 objWorldPosition)
+    
+    public void GenerateObject(Vector3 objWorldPosition, GridObjectData data, bool ignoreCollide = false)
     {
         GridSystem gSysteme;
         Vector2Int gPos;
@@ -40,10 +35,13 @@ public class ObjectFactory : MonoBehaviour
         {
             Vector3 worldGridCellPos = gSysteme.GridToWorld(gPos);
             Quaternion sampleOverrideRotation = Quaternion.Euler(-90f, 0f, 0f);
-            GameObject obj = GameObject.Instantiate(SampleObject, worldGridCellPos, sampleOverrideRotation);
+            GameObject obj = Instantiate(data.Prefab, worldGridCellPos, sampleOverrideRotation);
+
+            GridObject gObj = obj.GetComponent<GridObject>();
+            gObj.InitializeFromDataFile(data);
 
             // TODO: Check return value when using this
-            gSysteme.Inventory.AddObject(obj.GetComponent<GridObject>(), gPos);
+            gSysteme.Inventory.AddObject(obj.GetComponent<GridObject>(), gPos, ignoreCollide);
         }
     }
 }

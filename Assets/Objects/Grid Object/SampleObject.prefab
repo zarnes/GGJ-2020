@@ -107,5 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7914ac50aeb1c154d8a1bee20297f666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoordinatesUsed: []
+  CoordinatesUsed:
+  - {x: 0, y: 0}
   Position: {x: 0, y: 0}
+  initialDragPosition: {x: 0, y: 0, z: 0}

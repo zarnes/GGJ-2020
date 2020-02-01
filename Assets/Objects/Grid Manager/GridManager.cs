@@ -44,8 +44,8 @@ public class GridManager : MonoBehaviour
             return false;
 
         // TODO keep this ? See GD
-        if (grid.Type == GridInventory.GridType.Output)
-            return false;
+        /*if (grid.Type == GridInventory.GridType.Output)
+            return false;*/
 
         _currentDragged = gridObj;
         return true;

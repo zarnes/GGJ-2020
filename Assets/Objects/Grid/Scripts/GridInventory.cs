@@ -16,12 +16,15 @@ public class GridInventory : MonoBehaviour
         _myGrid = GetComponent<GridSystem>();
     }
     
-    public bool AddObject(GridObject gObj, Vector2Int coords)
+    public bool AddObject(GridObject gObj, Vector2Int coords, bool ignoreCollide = false)
     {
-        GridObject collided = Collide(gObj, coords);
-        if (collided != null)
-            return false;
-
+        if (!ignoreCollide)
+        {
+            GridObject collided = Collide(gObj, coords);
+            if (collided != null)
+                return false;
+        }
+        
         gObj.Position = coords;
         _objects.Add(gObj);
         // TODO feedback add
@@ -32,6 +35,8 @@ public class GridInventory : MonoBehaviour
     {
         bool removed = _objects.Remove(gObj);
         // TODO feedback remove if rmeoved
+        if (removed)
+            Destroy(gObj.gameObject);
         return removed;
     }
 
@@ -59,10 +64,12 @@ public class GridInventory : MonoBehaviour
             return false;
         }
 
-        else if (Collide(gObj, coords) != null)
+        GridObject collided = Collide(gObj, coords);
+        if (collided != null)
         {
+            Debug.Log("Colliding on end drag with " + collided.name);
+            return RecipeManager.Instance.ApplyRecipe(gObj, collided);
             // TODO feedback collide, and eventual interaction
-            return false;
         }
         
         // If dragged object was not in the same grid
@@ -103,7 +110,7 @@ public class GridInventory : MonoBehaviour
         {
             Vector2Int finalCoord = coords + relativeCoord;
             GridObject collided = GetObject(finalCoord);
-            if (collided != null)
+            if (collided != null && collided != gObj)
                 return collided;
         }
 

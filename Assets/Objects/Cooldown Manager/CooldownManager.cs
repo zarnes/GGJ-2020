@@ -27,6 +27,7 @@ public class CooldownManager : MonoBehaviour
     public void Launch(float durationInSeconds)
     {
         IsStarted = true;
+        value = 0f;
         duration = durationInSeconds;
         EndTime = Time.time + durationInSeconds;
         OnStart?.Invoke();
@@ -35,6 +36,7 @@ public class CooldownManager : MonoBehaviour
     public void Stop()
     {
         IsStarted = false;
+        value = 0f;
         EndTime = 0f;
     }
 

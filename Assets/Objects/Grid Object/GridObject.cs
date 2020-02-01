@@ -8,7 +8,7 @@ public class GridObject : MonoBehaviour
     public Vector2Int Position;
 
     public Vector3 initialDragPosition;
-
+    
     public GridObjectData Data { get; private set; }
 
     public void InitializeFromDataFile(GridObjectData data)
@@ -24,6 +24,9 @@ public class GridObject : MonoBehaviour
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
         gSystem.Inventory.StartMove(this);
+
+        CooldownManager cdMng = gameObject.AddComponent<CooldownManager>();
+        cdMng.Launch(10f);
     }
 
     public void OnMouseDrag()

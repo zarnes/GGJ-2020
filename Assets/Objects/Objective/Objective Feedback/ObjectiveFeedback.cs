@@ -1,18 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectiveFeedback : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private ObjectiveConfiguration _configuration;
 
-    // Update is called once per frame
-    void Update()
+    public void Init(ObjectiveConfiguration configuration)
     {
-        
+        _configuration = configuration;
+        name = configuration.Object.name;
     }
 }

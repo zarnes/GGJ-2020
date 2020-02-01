@@ -62,8 +62,7 @@ public class RecipeManager : MonoBehaviour
                 GridSystem grid;
                 Vector2Int gCoords;
                 GridManager.Instance.GetGridCoords(gObj.transform.position, out grid, out gCoords);
-                grid.Inventory.RemoveObject(gObj);
-                //Destroy(gObj.gameObject);
+                grid.Inventory.RemoveObject(gObj, true);
             }
             else if (input.Behavior == RecipeInput.CraftBehavior.PlaceBack)
             {

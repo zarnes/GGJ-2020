@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectifManager : MonoBehaviour
+public class ObjectiveManager : MonoBehaviour
 {
     public List<ObjectiveSlot> ObjectivesSlots;
     public GameObject ObjectiveFeedbackPrefab;
@@ -13,14 +13,17 @@ public class ObjectifManager : MonoBehaviour
         SpawnObjective(configuration.Objectives[0]);
     }
 
-    public bool SpawnObjective(ObjectiveConfiguration objective)
+    public bool SpawnObjective(ObjectiveConfiguration configuration)
     {
         foreach(ObjectiveSlot slot in ObjectivesSlots)
         {
             if (slot.Occupied)
                 continue;
 
-            slot.Configuration = objective;
+            slot.Configuration = configuration;
+            slot.Occupied = true;
+            GameObject feedbackGo = Instantiate(ObjectiveFeedbackPrefab);
+            feedbackGo.GetComponent<ObjectiveFeedback>().Init(configuration);
             return true;
         }
         return false;

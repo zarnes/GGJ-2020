@@ -31,11 +31,11 @@ public class GridInventory : MonoBehaviour
         return true;
     }
 
-    public bool RemoveObject(GridObject gObj)
+    public bool RemoveObject(GridObject gObj, bool destroy)
     {
         bool removed = _objects.Remove(gObj);
         // TODO feedback remove if rmeoved
-        if (removed)
+        if (removed && destroy)
             Destroy(gObj.gameObject);
         return removed;
     }
@@ -82,7 +82,7 @@ public class GridInventory : MonoBehaviour
                 return false;
             }
 
-            inventory.RemoveObject(gObj);
+            inventory.RemoveObject(gObj, false);
             AddObject(gObj, coords);
         }
 

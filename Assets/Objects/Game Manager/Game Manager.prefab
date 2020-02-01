@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e84d681715944478719265875ee5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelConfiguration: {fileID: 11400000, guid: e486a18aa0fbe96428398da112a9bcbf, type: 2}
+  ObjectiveManager: {fileID: 0}

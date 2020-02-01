@@ -38,6 +38,9 @@ public class ObjectiveManager : MonoBehaviour
     {
         foreach(ObjectiveSlot slot in ObjectivesSlots)
         {
+            if (!slot.Occupied)
+                continue;
+
             GridObject gObj = outputInventory.GetObjectWithData(slot.Configuration.Object);
             if (gObj != null)
             {

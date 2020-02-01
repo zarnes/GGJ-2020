@@ -978,6 +978,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8196025976064544660, guid: 9d11df1ecc9e159408b9714d4daa4c71,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d11df1ecc9e159408b9714d4daa4c71, type: 3}
 --- !u!1001 &7113916398191595887

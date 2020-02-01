@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ObjectiveConfiguration
+[CreateAssetMenu(fileName = "New Objective Data", menuName = "Inventory System/Objective", order = 0)]
+public class ObjectiveConfiguration : ScriptableObject
 {
     public GridObjectData Object;
-
-    // TODO add spawn rules
+    public GameObject ScrollInfos;
 }

@@ -12,4 +12,9 @@ public class ObjectiveFeedback : MonoBehaviour
         _configuration = configuration;
         name = "Objective : " + configuration.Object.name;
     }
+
+    void OnMouseUp()
+    {
+        GameCanvas.Instance.OpenScroll(_configuration);
+    }
 }

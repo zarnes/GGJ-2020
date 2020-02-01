@@ -129,7 +129,7 @@ public class GridInventory : MonoBehaviour
     public enum GridType
     {
         Input,
-        WorkdBench,
+        WorkBench,
         Output
     }
 }

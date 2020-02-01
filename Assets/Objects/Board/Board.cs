@@ -19,7 +19,7 @@ public class Board : MonoBehaviour
             {
                 for (int y = 0; y < grid.GridSize.y; ++y)
                 {
-                    Instantiate(CellPrefab, grid.GridToWorld(new Vector2Int(x, y)), Quaternion.identity, CellsParent);
+                    Instantiate(CellPrefab, grid.GridToWorld(new Vector2Int(x, y)) + Vector3.forward, Quaternion.identity, CellsParent);
                 }
             }
         }

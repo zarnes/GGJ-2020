@@ -70,7 +70,7 @@ public class GridInventory : MonoBehaviour
             Debug.LogWarning("Tried to end a move while no object was dragged", gameObject);
             return false;
         }
-
+        Debug.Log("Undragged object");
         if (!ObjectPositionValid(gObj, coords))
         {
             // TODO feedback not in grid

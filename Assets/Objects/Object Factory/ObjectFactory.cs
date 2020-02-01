@@ -6,15 +6,6 @@ public class ObjectFactory : MonoBehaviour
 {
     public static ObjectFactory Instance;
 
-    // TODO: remove this logic when other components are setup
-    /*[SerializeField]
-    private GameObject SampleObject;
-    [SerializeField]
-    private GameObject SampleObjectB;
-    [SerializeField]
-    private GameObject SampleObjectC;
-    private int index;*/
-
     void Awake()
     {
         if (Instance != null)

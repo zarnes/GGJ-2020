@@ -33,7 +33,8 @@ public class GridObject : MonoBehaviour
         GridSystem gSystem;
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
-        gSystem.Inventory.StartMove(this);
+        bool registered = gSystem.Inventory.StartMove(this);
+        Debug.Log("Registered success: " + registered);
     }
 
     public void OnMouseDrag()

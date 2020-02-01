@@ -7,4 +7,6 @@ public class GridObjectData : ScriptableObject
 {
     public GameObject Prefab;
     public List<Vector2Int> CoordinatesUsed;
+    public float TimeToDestroy;
+    public bool IsDestroyable;
 }

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 3694858182238263503}
   - component: {fileID: 567112516138720531}
   - component: {fileID: -2533267542742038908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SampleObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   Position: {x: 0, y: 0}
   initialDragPosition: {x: 0, y: 0, z: 0}
+  cdMng: {fileID: 707700487024442553}
 --- !u!1001 &4083441193114228766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,10 +143,20 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6493532399877297194, guid: dc8ee9f305a9a9046960d9d1e4a1d089,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6493532399877297195, guid: dc8ee9f305a9a9046960d9d1e4a1d089,
         type: 3}
       propertyPath: m_Name
       value: CooldownSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493532399877297195, guid: dc8ee9f305a9a9046960d9d1e4a1d089,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6493532399877297197, guid: dc8ee9f305a9a9046960d9d1e4a1d089,
         type: 3}

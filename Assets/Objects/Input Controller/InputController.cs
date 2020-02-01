@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
     private LayerMask bottomColliderMask;
+    private LayerMask objectColliderMask;
 
     public GridObjectData A;
     public GridObjectData B;
@@ -13,6 +14,7 @@ public class InputController : MonoBehaviour
     void Start()
     {
         bottomColliderMask = LayerMask.NameToLayer("BottomCollider");
+        objectColliderMask = LayerMask.NameToLayer("ObjectCollider");
     }
 
     // Update is called once per frame
@@ -29,6 +31,14 @@ public class InputController : MonoBehaviour
                 {
                     GridObjectData data = Input.GetMouseButtonDown(0) ? A : B;
                     ObjectFactory.Instance.GenerateObject(hit.point, data);
+                }
+                else if (hit.transform.gameObject.layer == objectColliderMask)
+                {
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        print(hit.transform.gameObject.GetComponent<GridObject>().Position);
+                        hit.transform.gameObject.GetComponent<GridObject>().LaunchTrashCooldown();
+                    }
                 }
             }
 

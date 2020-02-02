@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GridSystem InputGridSystem;
 
+    [SerializeField]
+    private Transform _tutoPanel;
+
     private int _points;
 
     // Start is called before the first frame update
@@ -37,6 +40,8 @@ public class GameManager : MonoBehaviour
 
         if (!_levelConfiguration.AllowFirstInfiniteRecipe)
             _firstObjectiveFinished = true;
+
+        _tutoPanel.gameObject.SetActive(!_firstObjectiveFinished);
 
         ObjectFactory objFactory = ObjectFactory.Instance;
         foreach (StockItemConfiguration itemConfiguration in _levelConfiguration.ItemsInStock)
@@ -67,7 +72,10 @@ public class GameManager : MonoBehaviour
                     _currentRespawnTime = _levelConfiguration.MinimumRespawnTime;
             }
             else if (!_firstObjectiveFinished)
+            {
+                _tutoPanel.gameObject.SetActive(false);
                 _firstObjectiveFinished = true;
+            }
 
             SpawnRandomObjective();
         }

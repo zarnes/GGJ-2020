@@ -754,6 +754,12 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c04475e05fc2b6c47bb196407760d679, type: 3}
+--- !u!224 &2173326500811971237 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1369060647, guid: c04475e05fc2b6c47bb196407760d679,
+    type: 3}
+  m_PrefabInstance: {fileID: 2173326500811971236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2422120576295588820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1059,6 +1065,11 @@ PrefabInstance:
       propertyPath: InputGridSystem
       value: 
       objectReference: {fileID: 238597826}
+    - target: {fileID: 8081755179470078516, guid: 87dafca6b5a38f743935a279b2b25c8d,
+        type: 3}
+      propertyPath: _tutoPanel
+      value: 
+      objectReference: {fileID: 2173326500811971237}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87dafca6b5a38f743935a279b2b25c8d, type: 3}
 --- !u!1001 &7113916398191595887

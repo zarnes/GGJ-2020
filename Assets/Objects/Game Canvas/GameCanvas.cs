@@ -33,7 +33,7 @@ public class GameCanvas : MonoBehaviour
 
     [SerializeField]
     private Text _scoreText;
-
+    
     private int lastTimerDisplayed;
 
     private void Awake()

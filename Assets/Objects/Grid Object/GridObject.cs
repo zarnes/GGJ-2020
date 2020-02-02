@@ -29,8 +29,6 @@ public class GridObject : MonoBehaviour
     public CooldownManager cdMng;
     
     [Header("Dont touch this")]
-    
-    [Header("Dont touch this")]
     public List<Vector2Int> CoordinatesUsed;
 
     public void InitializeFromDataFile(GridObjectData data, bool shouldBeOnCooldown = false)
@@ -79,7 +77,7 @@ public class GridObject : MonoBehaviour
     {
         if (!IsDragable)
             return;
-
+        
         GridSystem gSystem;
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
@@ -89,7 +87,10 @@ public class GridObject : MonoBehaviour
     public void OnMouseDrag()
     {
         if (!IsDragable)
+        {
+            Input.ResetInputAxes();
             return;
+        }
 
         Vector3 mosPos = Input.mousePosition;
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mosPos);

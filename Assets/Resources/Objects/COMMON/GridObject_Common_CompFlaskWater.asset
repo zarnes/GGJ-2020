@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
-  m_Name: GridObject_Common_BottleSmallEmpty
+  m_Name: GridObject_Common_CompFlaskWater
   m_EditorClassIdentifier: 
-  Name: Small Potion Bottle (Empty)
-  Prefab: {fileID: 8260910040569133456, guid: 5beafa192014c3a4abb445bc927c6ea9, type: 3}
+  Name: Flask (Water)
+  Prefab: {fileID: 8260910040569133456, guid: ba08f1b7f63b84243b3d5ee2b615d848, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
   - {x: 0, y: -1}

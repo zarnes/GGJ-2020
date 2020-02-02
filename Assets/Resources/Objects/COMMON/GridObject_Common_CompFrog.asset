@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
-  m_Name: GridObject_Common_BottleSmallEmpty
+  m_Name: GridObject_Common_CompFrog
   m_EditorClassIdentifier: 
-  Name: Small Potion Bottle (Empty)
-  Prefab: {fileID: 8260910040569133456, guid: 5beafa192014c3a4abb445bc927c6ea9, type: 3}
+  Name: Frog
+  Prefab: {fileID: 8260910040569133456, guid: 5f676099011fe8c4eb165f9549f1195b, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
-  - {x: 0, y: -1}
+  - {x: 1, y: 0}
   TimeToDestroy: 3
   TimeToRespawn: 1
   IsDestroyable: 1

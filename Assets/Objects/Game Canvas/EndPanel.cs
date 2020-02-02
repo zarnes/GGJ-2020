@@ -51,6 +51,8 @@ public class EndPanel : MonoBehaviour
 
     private IEnumerator ShowScoreCoroutine()
     {
+        MusicManager.Instance.PlaySound("Score");
+
         float start = Time.time;
         float end = start + ScoreTime;
         float current = start;

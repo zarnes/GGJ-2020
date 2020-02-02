@@ -115,6 +115,8 @@ public class GridObject : MonoBehaviour
         initialDragPosition = transform.position;
         bool registered = gSystem.Inventory.StartMove(this);
 
+        GetComponent<SpriteRenderer>().sortingOrder = 3;
+
         if (registered && _onSound.Clip != null)
             MusicManager.Instance.PlaySound(_onSound);
     }
@@ -146,6 +148,8 @@ public class GridObject : MonoBehaviour
         GridSystem gSystem;
         Vector2Int gCoords;
 
+        GetComponent<SpriteRenderer>().sortingOrder = 2;
+        
         if (GridManager.Instance.GetGridCoords(transform.position + _offset, out gSystem, out gCoords) && gSystem.Inventory.Type != GridInventory.GridType.Input)
         {
             Vector3 worldPos = gSystem.GridToWorld(gCoords);

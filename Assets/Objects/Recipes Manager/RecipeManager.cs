@@ -58,8 +58,11 @@ public class RecipeManager : MonoBehaviour
             //ObjectFactory.Instance.GenerateObject(inputObject.initialDragPosition, output.Object, true);
             ObjectFactory.Instance.GenerateObject(spawnPosition, output.Object, true);
 
+            if (validRecipe.Sound.Clip != null)
+                MusicManager.Instance.PlaySound(validRecipe.Sound);
+
             if (validRecipe.Accident != null && UnityEngine.Random.Range(0f, 1f) < validRecipe.AccidentPropability)
-                GridManager.Instance.SpawnInRandomZone(validRecipe.Accident, target.transform.position, 4);
+                GridManager.Instance.SpawnScrapInRandomZone(validRecipe.Accident, target.transform.position, 4);
         }
 
         int index = 0;

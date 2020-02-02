@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
-  m_Name: GridObject_Common_CompEyeBall
+  m_Name: GridObject_Common_Scrap
   m_EditorClassIdentifier: 
-  Name: Frog Eye
-  Prefab: {fileID: 8260910040569133456, guid: 252861d97c4c03740bba36d3f340b586, type: 3}
+  Name: Useless Scrap
+  Prefab: {fileID: 8260910040569133456, guid: dac1b1ca88480a142bdb470c4d1d9c91, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
-  TimeToDestroy: 3
+  TimeToDestroy: 4
   TimeToRespawn: 1
   IsDestroyable: 1
+  TakeOnSound:
+    Clip: {fileID: 0}
+    Volume: 1
+  TakeOffSound:
+    Clip: {fileID: 0}
+    Volume: 1

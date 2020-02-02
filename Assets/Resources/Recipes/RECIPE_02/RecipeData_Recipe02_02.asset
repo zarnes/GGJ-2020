@@ -16,10 +16,18 @@ MonoBehaviour:
   - Object: {fileID: 11400000, guid: 4b909ace63f8e8c408074c003df67b96, type: 2}
     Behavior: 1
     CanBeTargetObject: 0
+    TimeToCraft: 0
   - Object: {fileID: 11400000, guid: f714a90526e648547990bf598ef82658, type: 2}
     Behavior: 1
     CanBeTargetObject: 1
+    TimeToCraft: 0
   Outputs:
   - Object: {fileID: 11400000, guid: 91d85dfa9a7546b4ba4b9dcc9de07d6c, type: 2}
     InputObjectIndex: 1
+    TimeToCraft: 0
     ObjectRelativePosition: {x: 0, y: 0}
+  Sound:
+    Clip: {fileID: 8300000, guid: 1118f4474b39fc541bc1911cfc92b62e, type: 3}
+    Volume: 1
+  Accident: {fileID: 0}
+  AccidentPropability: 0.5

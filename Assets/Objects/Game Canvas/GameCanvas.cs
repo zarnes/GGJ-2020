@@ -49,6 +49,7 @@ public class GameCanvas : MonoBehaviour
 
     public void ValidateOutput()
     {
+        MusicManager.Instance.PlaySound("Validate");
         int points = ObjectiveManager.ValidateObjectives(OutputInventory);
         GameManager.Instance.AddPoints(points);
     }

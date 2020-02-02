@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadLevel()
     {
+        MusicManager.Instance.PlaySound("Page");
         SceneManager.LoadScene("Play Scene");
     }
 
@@ -43,12 +44,14 @@ public class LevelManager : MonoBehaviour
         if (index < 0 || index >= Levels.Count)
             return;
 
+        MusicManager.Instance.PlaySound("Page");
         CurrentLevel = Levels[index];
         SceneManager.LoadScene("Play Scene");
     }
 
     public void LoadMenu()
     {
+        MusicManager.Instance.PlaySound("Page");
         SceneManager.LoadScene("Menu");
     }
 

@@ -26,5 +26,8 @@ MonoBehaviour:
     InputObjectIndex: 0
     TimeToCraft: 0
     ObjectRelativePosition: {x: 0, y: 0}
-  Accident: {fileID: 11400000, guid: b88b25c8a11a61e4b82e509666ad6b9e, type: 2}
+  Sound:
+    Clip: {fileID: 8300000, guid: 1b0bff1994ce5124cb3e6ab5e0297ab8, type: 3}
+    Volume: 1
+  Accident: {fileID: 11400000, guid: 484829a262330f845980db4657892309, type: 2}
   AccidentPropability: 0.5

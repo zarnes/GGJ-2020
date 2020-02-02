@@ -71,7 +71,7 @@ public class GridManager : MonoBehaviour
         return _grids[0];
     }
 
-    public bool SpawnInRandomZone(GridObjectData data, Vector3 epicenter, float Range)
+    public bool SpawnScrapInRandomZone(GridObjectData data, Vector3 epicenter, float Range)
     {
         int tries = 10;
         while (tries >= 0)

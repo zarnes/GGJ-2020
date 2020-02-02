@@ -6,8 +6,8 @@ public class GridObject : MonoBehaviour
 {
     [SerializeField]
     private Vector3 _offset;
-
-    public List<Vector2Int> CoordinatesUsed;
+    
+    internal List<Vector2Int> CoordinatesUsed;
     public Vector2Int Position;
     public float TimeToDestroy;
 

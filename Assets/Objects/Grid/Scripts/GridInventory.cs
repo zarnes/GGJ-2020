@@ -10,6 +10,8 @@ public class GridInventory : MonoBehaviour
     private List<GridObject> _objects;
     private GridSystem _myGrid;
 
+    internal bool InMenu;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -85,6 +87,11 @@ public class GridInventory : MonoBehaviour
         if (collided != null)
         {
             Debug.Log("Colliding on end drag with " + collided.name);
+            if (InMenu)
+            {
+                MenuManager.Instance.Selected(collided);
+                return false;
+            }
             return RecipeManager.Instance.ApplyRecipe(gObj, collided);
             // TODO feedback collide, and eventual interaction
         }

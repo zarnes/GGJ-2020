@@ -84,6 +84,12 @@ public class GameManager : MonoBehaviour
             SpawnRandomObjective();
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+            LevelManager.Instance.ReloadLevel();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            LevelManager.Instance.LoadMenu();
+
         if (TimeRemaining <= 0)
         {
             Debug.Log("TIME OUT");

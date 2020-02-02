@@ -26,7 +26,7 @@ public class InputController : MonoBehaviour
 
                     GridManager gMng = GridManager.Instance;
 
-                    if (gMng.FindGridWithObject(obj) != gMng.GetInputGridSystem().Inventory)
+                    if (gMng.FindGridWithObject(obj) != gMng.GetInputGridSystem().Inventory && obj.Data.IsDestroyable)
                     {
                         ObjectFactory.Instance.BeginTrashObject(obj);
                     }

@@ -59,10 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7914ac50aeb1c154d8a1bee20297f666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offset: {x: 0, y: 0.5, z: 0}
   CoordinatesUsed:
   - {x: 0, y: 0}
   Position: {x: 0, y: 0}
   TimeToDestroy: 0
+  MenuDragItem: 0
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700487024442553}
 --- !u!61 &8329414990379230148

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
+    [SerializeField]
+    private Vector3 _offset;
+
     public List<Vector2Int> CoordinatesUsed;
     public Vector2Int Position;
     public float TimeToDestroy;
@@ -24,6 +27,7 @@ public class GridObject : MonoBehaviour
         CoordinatesUsed = data.CoordinatesUsed;
         TimeToDestroy = data.TimeToDestroy;
         gameObject.name = data.name;
+        transform.position -= _offset;
     }
 
     public void LaunchTrashCooldownFeedback()
@@ -66,14 +70,15 @@ public class GridObject : MonoBehaviour
         if (GridManager.Instance.GetGridCoords(transform.position, out gSystem, out gCoords) && gSystem.Inventory.Type != GridInventory.GridType.Input)
         {
             Vector3 worldPos = gSystem.GridToWorld(gCoords);
-            transform.position = gSystem.Inventory.EndMove(gCoords) ? worldPos : initialDragPosition;
+            transform.position = gSystem.Inventory.EndMove(gCoords) ? worldPos - _offset : initialDragPosition;
+            //transform.position -= _offset;
 
             if (MenuDragItem)
                 MenuManager.Instance.TestDragNDropUnderstood(gSystem);
         }
         else
         {
-            transform.position = initialDragPosition;
+            transform.position = initialDragPosition - _offset;
             GridManager.Instance.UnregisterDragged();
         }
 
@@ -81,5 +86,11 @@ public class GridObject : MonoBehaviour
 
         if (MenuDragItem)
             MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drag);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.gray;
+        Gizmos.DrawWireSphere(transform.position + _offset, .5f);
     }
 }

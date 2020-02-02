@@ -10,6 +10,7 @@ public class LevelConfiguration : ScriptableObject
     public float RespawnTime = 15;
     public float TimeDecreasePerPerfect = 3;
     public float MinimumRespawnTime = 5;
+    public bool AllowFirstInfiniteRecipe;
 
     public List<StockItemConfiguration> ItemsInStock;
     public List<ObjectiveConfiguration> Objectives;

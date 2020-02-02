@@ -34,7 +34,10 @@ public class GameManager : MonoBehaviour
         _currentRespawnTime = _levelConfiguration.RespawnTime;
         _nextSpawn = _currentRespawnTime;
         ObjectiveManager.LoadConfiguration(_levelConfiguration);
-        
+
+        if (!_levelConfiguration.AllowFirstInfiniteRecipe)
+            _firstObjectiveFinished = true;
+
         ObjectFactory objFactory = ObjectFactory.Instance;
         foreach (StockItemConfiguration itemConfiguration in _levelConfiguration.ItemsInStock)
             objFactory.GenerateObject(InputGridSystem, itemConfiguration.Position, itemConfiguration.Object);

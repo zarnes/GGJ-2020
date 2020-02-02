@@ -747,11 +747,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4084792248841764790, guid: c04475e05fc2b6c47bb196407760d679,
+        type: 3}
+      propertyPath: m_DynamicPixelsPerUnit
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4813753435236779731, guid: c04475e05fc2b6c47bb196407760d679,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 9172587458450560802, guid: c04475e05fc2b6c47bb196407760d679,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c04475e05fc2b6c47bb196407760d679, type: 3}
 --- !u!224 &2173326500811971237 stripped

@@ -70,4 +70,28 @@ public class GridManager : MonoBehaviour
     {
         return _grids[0];
     }
+
+    public bool SpawnInRandomZone(GridObjectData data, Vector3 epicenter, float Range)
+    {
+        int tries = 10;
+        while (tries >= 0)
+        {
+            --tries;
+            Vector2 randCircle = UnityEngine.Random.insideUnitCircle * Range;
+            Vector3 position = epicenter + new Vector3(randCircle.x, randCircle.y);
+            GridSystem grid;
+            Vector2Int gCoords;
+            if (GetGridCoords(position, out grid, out gCoords))
+            {
+                if (grid.Inventory.Type == GridInventory.GridType.WorkBench)
+                {
+                    if (ObjectFactory.Instance.GenerateObject(position, data))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -7,4 +7,7 @@ public class Recipe : ScriptableObject
 {
     public List<RecipeInput> Inputs;
     public List<RecipeOutput> Outputs;
+
+    public GridObjectData Accident;
+    public float AccidentPropability = .5f;
 }

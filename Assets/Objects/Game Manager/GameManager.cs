@@ -81,9 +81,9 @@ public class GameManager : MonoBehaviour
         ObjectiveConfiguration config = _levelConfiguration.Objectives[rndIndex];
         ObjectiveManager.SpawnObjective(config);
 
-        ObjectFactory objFactory = ObjectFactory.Instance;
+        /*ObjectFactory objFactory = ObjectFactory.Instance;
         foreach (StockItemConfiguration itemConfiguration in _levelConfiguration.ItemsInStock)
-            objFactory.GenerateObject(InputGridSystem, itemConfiguration.Position, itemConfiguration.Object);
+            objFactory.GenerateObject(InputGridSystem, itemConfiguration.Position, itemConfiguration.Object);*/
         
         _nextSpawn = _currentRespawnTime;
     }

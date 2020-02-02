@@ -13,6 +13,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GridSystem DragGrid;
 
+    [SerializeField]
+    [Space]
+    private GridSystem LevelsGrid;
+    [SerializeField]
+    private List<LevelObjectConfiguration> LevelsObjectsConfig;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,4 +55,12 @@ public class MenuManager : MonoBehaviour
         Drop,
         Hidden
     }
+}
+
+[System.Serializable]
+public class LevelObjectConfiguration
+{
+    public GridObject Object;
+    public int LevelIndex;
+    public bool Quit;
 }

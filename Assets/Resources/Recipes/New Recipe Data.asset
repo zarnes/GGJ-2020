@@ -23,6 +23,3 @@ MonoBehaviour:
   - Object: {fileID: 11400000, guid: 20ab56dac44cd0e4a85393d15a9629c6, type: 2}
     InputObjectIndex: 1
     ObjectRelativePosition: {x: 0, y: 0}
-  - Object: {fileID: 11400000, guid: 20ab56dac44cd0e4a85393d15a9629c6, type: 2}
-    InputObjectIndex: 1
-    ObjectRelativePosition: {x: 1, y: 0}

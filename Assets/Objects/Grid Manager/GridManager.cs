@@ -68,4 +68,9 @@ public class GridManager : MonoBehaviour
 
         return null;
     }
+
+    public GridSystem GetInputGridSystem()
+    {
+        return _grids[0];
+    }
 }

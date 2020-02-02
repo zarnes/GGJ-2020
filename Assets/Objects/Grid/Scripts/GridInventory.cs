@@ -98,8 +98,16 @@ public class GridInventory : MonoBehaviour
                 return false;
             }
 
+            Vector2Int oldPosition = gObj.Position;
+
             inventory.RemoveObject(gObj, false);
             AddObject(gObj, coords);
+            
+            if (inventory.Type == GridType.Input)
+            {
+                print("Duplicte");
+                ObjectFactory.Instance.GenerateObject(GridManager.Instance.GetInputGridSystem(), oldPosition, gObj.Data);
+            }
         }
 
         gObj.Position = coords;

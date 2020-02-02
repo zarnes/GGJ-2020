@@ -100,7 +100,6 @@ public class GridInventory : MonoBehaviour
             if (startGrid.Inventory.Type == GridType.Input)
                 return false;
 
-            Debug.Log("Colliding on end drag with " + collided.name);
             if (InMenu)
             {
                 MenuManager.Instance.Selected(collided);

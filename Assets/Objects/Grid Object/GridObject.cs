@@ -67,6 +67,7 @@ public class GridObject : MonoBehaviour
         cdMng.gameObject.SetActive(true);
         cdMng.Launch(TimeToRespawn);
         cdMng.OnFinish += MakeDragable;
+        cdMng.GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void LaunchCraftCooldownFeedback(float craftDuration)
@@ -87,18 +88,21 @@ public class GridObject : MonoBehaviour
     {
         IsDragable = true;
         cdMng.Stop();
+        cdMng.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void LaunchTrashCooldownFeedback()
     {
         cdMng.gameObject.SetActive(true);
         cdMng.Launch(TimeToDestroy);
+        cdMng.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     public void CancelTrashCooldown()
     {
         cdMng.Stop();
         cdMng.gameObject.SetActive(false);
+        cdMng.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     void OnMouseDown()

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
   m_Name: GridObject_Common_CompPepperFlower
   m_EditorClassIdentifier: 
-  Name: Cork
+  Name: Flowpepper
   Prefab: {fileID: 8260910040569133456, guid: 228b6b5339040264081ab16c5794c66e, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
   TimeToDestroy: 3
+  TimeToRespawn: 1
   IsDestroyable: 1

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
   m_Name: GridObject_Common_CompFlaskWaterDistilled
   m_EditorClassIdentifier: 
-  Name: Purpleaves
+  Name: Flask (Distilled Water)
   Prefab: {fileID: 8260910040569133456, guid: 058a6967ca6182142bdfbfcbf48a7c70, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
   - {x: 0, y: -1}
   TimeToDestroy: 3
+  TimeToRespawn: 1
   IsDestroyable: 1

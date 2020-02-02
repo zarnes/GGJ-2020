@@ -28,5 +28,5 @@ MonoBehaviour:
     Clip: {fileID: 0}
     Volume: 1
   TakeOffSound:
-    Clip: {fileID: 8300000, guid: f5c45319fb2bb284ebb386fd6b14240e, type: 3}
+    Clip: {fileID: 8300000, guid: c3276f06427d78d47bab448bc0212ef6, type: 3}
     Volume: 1

@@ -764,7 +764,7 @@ PrefabInstance:
     - target: {fileID: 6761158312961597817, guid: ea71d2de1a72d73478cb94380639e808,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6761158312961597817, guid: ea71d2de1a72d73478cb94380639e808,
         type: 3}
@@ -824,7 +824,7 @@ PrefabInstance:
     - target: {fileID: 6761158312961597818, guid: ea71d2de1a72d73478cb94380639e808,
         type: 3}
       propertyPath: GridSize.x
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6761158312961597819, guid: ea71d2de1a72d73478cb94380639e808,
         type: 3}

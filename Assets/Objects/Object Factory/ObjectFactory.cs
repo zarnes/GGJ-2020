@@ -28,7 +28,20 @@ public class ObjectFactory : MonoBehaviour
             CancelTrashObject();
         }
     }
-    
+
+    public void GenerateObject(GridSystem gSystem, Vector2Int pos, GridObjectData data, bool ignoreCollide = false)
+    {
+        GridInventory inventory = gSystem.Inventory;
+        Quaternion sampleOverrideRotation = Quaternion.Euler(-90f, 0f, 0f);
+        Vector3 worldPos = gSystem.GridToWorld(pos);
+        GameObject obj = Instantiate(data.Prefab, worldPos, sampleOverrideRotation);
+
+        GridObject gObj = obj.GetComponent<GridObject>();
+        gObj.InitializeFromDataFile(data);
+
+        inventory.AddObject(obj.GetComponent<GridObject>(), pos, ignoreCollide);
+    }
+
     public void GenerateObject(Vector3 objWorldPosition, GridObjectData data, bool ignoreCollide = false)
     {
         GridSystem gSysteme;

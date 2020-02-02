@@ -126,6 +126,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: -1}
   Position: {x: 0, y: 0}
+  TimeToDestroy: 0
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700487024442553}
 --- !u!1001 &4083441193114228766
@@ -223,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 6493532399877297197, guid: dc8ee9f305a9a9046960d9d1e4a1d089,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.7072427
+      value: 1.2357477
       objectReference: {fileID: 0}
     - target: {fileID: 6493532399877297197, guid: dc8ee9f305a9a9046960d9d1e4a1d089,
         type: 3}

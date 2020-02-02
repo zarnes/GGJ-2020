@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     private float _nextSpawn;
     private float _currentRespawnTime;
 
+    [SerializeField]
+    private GridSystem InputGridSystem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,11 @@ public class GameManager : MonoBehaviour
         _currentRespawnTime = _levelConfiguration.RespawnTime;
         _nextSpawn = _currentRespawnTime;
         ObjectiveManager.LoadConfiguration(_levelConfiguration);
+        
+        ObjectFactory objFactory = ObjectFactory.Instance;
+        foreach (StockItemConfiguration itemConfiguration in _levelConfiguration.ItemsInStock)
+            objFactory.GenerateObject(InputGridSystem, itemConfiguration.Position, itemConfiguration.Object);
+
         TimeRemaining = _levelConfiguration.LevelTime;
         GameCanvas.UpdateTimer(TimeRemaining, 0, false);
     }
@@ -72,6 +80,11 @@ public class GameManager : MonoBehaviour
         int rndIndex = Random.Range(0, _levelConfiguration.Objectives.Count - 1);
         ObjectiveConfiguration config = _levelConfiguration.Objectives[rndIndex];
         ObjectiveManager.SpawnObjective(config);
+
+        ObjectFactory objFactory = ObjectFactory.Instance;
+        foreach (StockItemConfiguration itemConfiguration in _levelConfiguration.ItemsInStock)
+            objFactory.GenerateObject(InputGridSystem, itemConfiguration.Position, itemConfiguration.Object);
+        
         _nextSpawn = _currentRespawnTime;
     }
 }

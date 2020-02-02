@@ -66,6 +66,7 @@ public class GridObject : MonoBehaviour
         else
         {
             transform.position = initialDragPosition;
+            GridManager.Instance.UnregisterDragged();
         }
 
         initialDragPosition = Vector3.zero;

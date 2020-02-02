@@ -60,7 +60,6 @@ public class EndPanel : MonoBehaviour
         {
             current = Time.time;
             float percentage = Mathf.InverseLerp(start, end, current);
-            Debug.Log(percentage);
             int scoreToDisplay = (int) (ScoreCurve.Evaluate(percentage) * (float) _finalScore);
             ScoreText.text = scoreToDisplay.ToString();
             yield return null;

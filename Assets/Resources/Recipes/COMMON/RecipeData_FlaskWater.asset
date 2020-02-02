@@ -20,7 +20,7 @@ MonoBehaviour:
   - Object: {fileID: 11400000, guid: 005d7257dc8573c4698b4cfcc8702d53, type: 2}
     Behavior: 0
     CanBeTargetObject: 1
-    TimeToCraft: 0
+    TimeToCraft: 3
   Outputs:
   - Object: {fileID: 11400000, guid: 6c8fcd0225b847e44ae70c9dc4372856, type: 2}
     InputObjectIndex: 0

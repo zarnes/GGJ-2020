@@ -20,11 +20,11 @@ MonoBehaviour:
   - Object: {fileID: 11400000, guid: 912d512d7826214488d55d673b259493, type: 2}
     Behavior: 0
     CanBeTargetObject: 1
-    TimeToCraft: 0
+    TimeToCraft: 3
   Outputs:
   - Object: {fileID: 11400000, guid: 501b3aac03048984abedf7d888ac29d2, type: 2}
     InputObjectIndex: 0
-    TimeToCraft: 0
+    TimeToCraft: 3
     ObjectRelativePosition: {x: 0, y: 0}
   Sound:
     Clip: {fileID: 8300000, guid: 1b0bff1994ce5124cb3e6ab5e0297ab8, type: 3}

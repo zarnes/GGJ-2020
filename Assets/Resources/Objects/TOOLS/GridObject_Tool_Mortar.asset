@@ -18,7 +18,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   TimeToDestroy: 3
-  TimeToRespawn: 1
+  TimeToRespawn: 240
   IsDestroyable: 0
   TakeOnSound:
     Clip: {fileID: 0}

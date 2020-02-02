@@ -17,7 +17,7 @@ MonoBehaviour:
   CoordinatesUsed:
   - {x: 0, y: 0}
   TimeToDestroy: 3
-  TimeToRespawn: 1
+  TimeToRespawn: 3
   IsDestroyable: 1
   TakeOnSound:
     Clip: {fileID: 8300000, guid: 4560c309cb4796c4ca0aecbc6bd80d6d, type: 3}

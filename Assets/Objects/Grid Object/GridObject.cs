@@ -8,6 +8,9 @@ public class GridObject : MonoBehaviour
     public Vector2Int Position;
     public float TimeToDestroy;
 
+    [SerializeField]
+    private bool MenuDragItem;
+
     public Vector3 initialDragPosition;
     
     public GridObjectData Data { get; private set; }
@@ -41,7 +44,6 @@ public class GridObject : MonoBehaviour
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
         bool registered = gSystem.Inventory.StartMove(this);
-        Debug.Log("Registered success: " + registered);
     }
 
     public void OnMouseDrag()
@@ -51,6 +53,9 @@ public class GridObject : MonoBehaviour
         worldPos.z = 0f;
 
         transform.position = worldPos;
+
+        if (MenuDragItem)
+            MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drop);
     }
 
     void OnMouseUp()
@@ -62,6 +67,9 @@ public class GridObject : MonoBehaviour
         {
             Vector3 worldPos = gSystem.GridToWorld(gCoords);
             transform.position = gSystem.Inventory.EndMove(gCoords) ? worldPos : initialDragPosition;
+
+            if (MenuDragItem)
+                MenuManager.Instance.TestDragNDropUnderstood(gSystem);
         }
         else
         {
@@ -69,5 +77,8 @@ public class GridObject : MonoBehaviour
         }
 
         initialDragPosition = Vector3.zero;
+
+        if (MenuDragItem)
+            MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drag);
     }
 }

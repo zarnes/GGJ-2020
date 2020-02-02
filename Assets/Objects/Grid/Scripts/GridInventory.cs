@@ -11,7 +11,7 @@ public class GridInventory : MonoBehaviour
     private GridSystem _myGrid;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _objects = new List<GridObject>();
         _myGrid = GetComponent<GridSystem>();

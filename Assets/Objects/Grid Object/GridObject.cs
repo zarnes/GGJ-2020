@@ -81,7 +81,7 @@ public class GridObject : MonoBehaviour
         }
         else
         {
-            transform.position = initialDragPosition - _offset;
+            transform.position = initialDragPosition;
             GridManager.Instance.UnregisterDragged();
         }
 

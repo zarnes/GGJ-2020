@@ -8,12 +8,15 @@ public class GridObject : MonoBehaviour
     private Vector3 _offset;
     
     internal List<Vector2Int> CoordinatesUsed;
+    [ReadOnly]
     public Vector2Int Position;
+    [ReadOnly]
     public float TimeToDestroy;
 
     [SerializeField]
     private bool MenuDragItem;
 
+    [ReadOnly]
     public Vector3 initialDragPosition;
     
     public GridObjectData Data { get; private set; }

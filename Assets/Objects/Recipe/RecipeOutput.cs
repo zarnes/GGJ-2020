@@ -7,5 +7,6 @@ public class RecipeOutput
 {
     public GridObjectData Object;
     public int InputObjectIndex;
+    public float TimeToCraft = 0;
     public Vector2Int ObjectRelativePosition;
 }

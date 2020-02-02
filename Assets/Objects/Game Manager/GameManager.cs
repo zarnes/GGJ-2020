@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnRandomObjective()
     {
-        int rndIndex = Random.Range(0, _levelConfiguration.Objectives.Count - 1);
+        int rndIndex = Random.Range(0, _levelConfiguration.Objectives.Count);
         ObjectiveConfiguration config = _levelConfiguration.Objectives[rndIndex];
         ObjectiveManager.SpawnObjective(config);
 

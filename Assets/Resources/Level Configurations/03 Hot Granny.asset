@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fc9ad087a143946a0ddc349c9c6ae8, type: 3}
+  m_Name: 02 Hot Sauce
+  m_EditorClassIdentifier: 
+  LevelTime: 120
+  RespawnTime: 30
+  TimeDecreasePerPerfect: 3
+  MinimumRespawnTime: 10
+  AllowFirstInfiniteRecipe: 0
+  ItemsInStock:
+  - Position: {x: 2, y: 3}
+    Object: {fileID: 11400000, guid: 5f129c513ede6c84d829314730958a32, type: 2}
+  - Position: {x: 3, y: 3}
+    Object: {fileID: 11400000, guid: 1a840bdcf279e60489087157a00b2047, type: 2}
+  - Position: {x: 4, y: 3}
+    Object: {fileID: 11400000, guid: 852434742c3c58240bbf876f83c89208, type: 2}
+  - Position: {x: 2, y: 4}
+    Object: {fileID: 11400000, guid: 0e31aa8f89459164fab8f95c790c8e4f, type: 2}
+  - Position: {x: 0, y: 4}
+    Object: {fileID: 11400000, guid: 005d7257dc8573c4698b4cfcc8702d53, type: 2}
+  - Position: {x: 0, y: 1}
+    Object: {fileID: 11400000, guid: f7a514fdc6accdc469c6aa1529469e3f, type: 2}
+  - Position: {x: 5, y: 4}
+    Object: {fileID: 11400000, guid: 912d512d7826214488d55d673b259493, type: 2}
+  - Position: {x: 4, y: 2}
+    Object: {fileID: 11400000, guid: 093117b5617fe734ea654a2befa7e248, type: 2}
+  Objectives:
+  - {fileID: 11400000, guid: aa925dcaa67e7e14a8cb656d84a2b2cf, type: 2}

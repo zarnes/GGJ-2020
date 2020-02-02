@@ -31,6 +31,11 @@ public class GridObject : MonoBehaviour
     [Header("Dont touch this")]
     public List<Vector2Int> CoordinatesUsed;
 
+    [SerializeField]
+    private MusicManager.SoundConfig _onSound;
+    [SerializeField]
+    private MusicManager.SoundConfig _offSound;
+
     public void InitializeFromDataFile(GridObjectData data, bool shouldBeOnCooldown = false)
     {
         Data = data;
@@ -39,6 +44,9 @@ public class GridObject : MonoBehaviour
         TimeToRespawn = data.TimeToRespawn;
         gameObject.name = data.name;
         transform.position -= _offset;
+
+        _onSound = data.TakeOnSound;
+        _offSound = data.TakeOffSound;
 
         if (shouldBeOnCooldown)
         {
@@ -83,6 +91,9 @@ public class GridObject : MonoBehaviour
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
         bool registered = gSystem.Inventory.StartMove(this);
+
+        if (registered && _onSound.Clip != null)
+            MusicManager.Instance.PlaySound(_onSound);
     }
 
     public void OnMouseDrag()
@@ -119,6 +130,9 @@ public class GridObject : MonoBehaviour
 
             if (MenuDragItem)
                 MenuManager.Instance.TestDragNDropUnderstood(gSystem);
+
+            if (_offSound.Clip != null)
+                MusicManager.Instance.PlaySound(_offSound);
         }
         else
         {
@@ -127,7 +141,6 @@ public class GridObject : MonoBehaviour
         }
 
         initialDragPosition = transform.position;
-        //initialDragPosition = Vector3.zero;
 
         if (MenuDragItem)
             MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drag);

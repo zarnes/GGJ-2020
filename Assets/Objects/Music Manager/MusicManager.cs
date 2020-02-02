@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private float _musicSwitchTime = 1f;
     [SerializeField]
-    private List<SoundConfig> _sounds;
+    private List<CachedSoundConfig> _sounds;
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class MusicManager : MonoBehaviour
 
     public bool PlayMusic(string musicName)
     {
-        SoundConfig config = Instance._sounds.Find(s => s.Name == musicName);
+        CachedSoundConfig config = Instance._sounds.Find(s => s.Name == musicName);
         if (config == null)
             return false;
 
@@ -36,7 +36,7 @@ public class MusicManager : MonoBehaviour
         return true;
     }
 
-    private IEnumerator PlayMusicCoroutine(SoundConfig config)
+    private IEnumerator PlayMusicCoroutine(CachedSoundConfig config)
     {
         float start = Time.time;
         float end = start + _musicSwitchTime / 2f;
@@ -73,23 +73,34 @@ public class MusicManager : MonoBehaviour
 
     public bool PlaySound(string soundName)
     {
-        SoundConfig config = Instance._sounds.Find(s => s.Name == soundName);
+        CachedSoundConfig config = Instance._sounds.Find(s => s.Name == soundName);
         if (config == null)
             return false;
+        
+        return PlaySound(config);
+    }
 
-        AudioSource source =  gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+    public bool PlaySound(SoundConfig config)
+    {
+        AudioSource source = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
         source.volume = config.Volume;
         source.clip = config.Clip;
         source.Play();
         Destroy(source, config.Clip.length + .2f);
+
         return true;
     }
 
     [System.Serializable]
     public class SoundConfig
     {
-        public string Name;
         public AudioClip Clip;
-        public float Volume;
+        public float Volume = 1;
+    }
+
+    [System.Serializable]
+    public class CachedSoundConfig : SoundConfig
+    {
+        public string Name;
     }
 }

@@ -22,4 +22,11 @@ MonoBehaviour:
   - {x: 0, y: -2}
   - {x: 1, y: -2}
   TimeToDestroy: 3
+  TimeToRespawn: 1
   IsDestroyable: 0
+  TakeOnSound:
+    Clip: {fileID: 0}
+    Volume: 1
+  TakeOffSound:
+    Clip: {fileID: 8300000, guid: f5c45319fb2bb284ebb386fd6b14240e, type: 3}
+    Volume: 1

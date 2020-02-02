@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 02 Hot Sauce
   m_EditorClassIdentifier: 
   LevelTime: 120
-  RespawnTime: 15
+  RespawnTime: 30
   TimeDecreasePerPerfect: 3
-  MinimumRespawnTime: 5
+  MinimumRespawnTime: 10
+  AllowFirstInfiniteRecipe: 0
   ItemsInStock:
   - Position: {x: 2, y: 3}
     Object: {fileID: 11400000, guid: 5f129c513ede6c84d829314730958a32, type: 2}

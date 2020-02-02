@@ -24,3 +24,9 @@ MonoBehaviour:
   TimeToDestroy: 3
   TimeToRespawn: 1
   IsDestroyable: 1
+  TakeOnSound:
+    Clip: {fileID: 0}
+    Volume: 1
+  TakeOffSound:
+    Clip: {fileID: 0}
+    Volume: 1

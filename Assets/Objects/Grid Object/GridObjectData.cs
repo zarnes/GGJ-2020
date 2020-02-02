@@ -11,4 +11,8 @@ public class GridObjectData : ScriptableObject
     public float TimeToDestroy;
     public float TimeToRespawn = 1f;
     public bool IsDestroyable;
+
+    [Space]
+    public MusicManager.SoundConfig TakeOnSound;
+    public MusicManager.SoundConfig TakeOffSound;
 }

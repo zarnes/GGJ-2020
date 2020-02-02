@@ -47,9 +47,15 @@ MonoBehaviour:
   _musicSource: {fileID: 2435278714134009527}
   _musicSwitchTime: 1
   _sounds:
-  - Name: 
-    Clip: {fileID: 0}
-    Volume: 0
+  - Name: Book A
+    Clip: {fileID: 8300000, guid: 78faf1f8f9f1d4b47a4f2db4ddfe0c9b, type: 3}
+    Volume: 1
+  - Name: Book B
+    Clip: {fileID: 8300000, guid: fccfdd2e8980b5b4ca72ee98e8a1b70c, type: 3}
+    Volume: 1
+  - Name: Book C
+    Clip: {fileID: 8300000, guid: 65a539f5fdab10e47bdc85c689ecac12, type: 3}
+    Volume: 1
 --- !u!82 &2435278714134009527
 AudioSource:
   m_ObjectHideFlags: 0
@@ -62,7 +68,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4c28aa1df61d7e841adda94fbf44333c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.29
   m_Pitch: 1
   Loop: 1
   Mute: 0

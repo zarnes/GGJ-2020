@@ -17,13 +17,13 @@ MonoBehaviour:
   TimeDecreasePerPerfect: 3
   MinimumRespawnTime: 5
   ItemsInStock:
-  - Position: {x: 0, y: 2}
+  - Position: {x: 0, y: 4}
     Object: {fileID: 11400000, guid: 005d7257dc8573c4698b4cfcc8702d53, type: 2}
-  - Position: {x: 2, y: 3}
+  - Position: {x: 2, y: 4}
     Object: {fileID: 11400000, guid: 912d512d7826214488d55d673b259493, type: 2}
-  - Position: {x: 4, y: 3}
+  - Position: {x: 4, y: 4}
     Object: {fileID: 11400000, guid: 5f129c513ede6c84d829314730958a32, type: 2}
-  - Position: {x: 5, y: 3}
+  - Position: {x: 5, y: 4}
     Object: {fileID: 11400000, guid: f194d5c54fc7cb94d89d775267e5c29f, type: 2}
   - Position: {x: 6, y: 4}
     Object: {fileID: 11400000, guid: 093117b5617fe734ea654a2befa7e248, type: 2}

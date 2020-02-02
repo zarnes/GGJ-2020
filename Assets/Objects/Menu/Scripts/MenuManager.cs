@@ -8,36 +8,41 @@ public class MenuManager : MonoBehaviour
     internal static MenuManager Instance;
 
     [SerializeField]
-    private Animator DragNDropAnim;
+    private Animator _dragNDropAnim;
     [SerializeField]
-    private GridObject MenuDrag;
+    private GridObject _menuDrag;
     [SerializeField]
-    private GridSystem DragGrid;
+    private GridSystem _dragGrid;
 
     [SerializeField]
     [Space]
-    private GridSystem LevelsGrid;
+    private GridSystem _levelsGrid;
     [SerializeField]
-    private List<LevelObjectConfiguration> LevelsObjectsConfig;
+    private List<LevelObjectConfiguration> _levelsObjectsConfig;
+
+    [SerializeField]
+    private Camera _camera;
+    [SerializeField]
+    private float _finalCamSize;
 
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
 
-        LevelsGrid.Inventory.InMenu = DragGrid.Inventory.InMenu = true;
+        _levelsGrid.Inventory.InMenu = _dragGrid.Inventory.InMenu = true;
 
-        DragGrid.Inventory.AddObject(MenuDrag, Vector2Int.zero, true);
+        _dragGrid.Inventory.AddObject(_menuDrag, Vector2Int.zero, true);
 
-        foreach (LevelObjectConfiguration config in LevelsObjectsConfig)
+        foreach (LevelObjectConfiguration config in _levelsObjectsConfig)
         {
-            LevelsGrid.Inventory.AddObject(config.Object, config.Position, true);
+            _levelsGrid.Inventory.AddObject(config.Object, config.Position, true);
         }
     }
 
         public void TestDragNDropUnderstood(GridSystem gSystem)
     {
-        if (gSystem != DragGrid)
+        if (gSystem != _dragGrid)
             DragDrop(DragDropState.Hidden);
     }
 
@@ -46,29 +51,53 @@ public class MenuManager : MonoBehaviour
         switch (state)
         {
             case DragDropState.Drag:
-                DragNDropAnim.SetBool("Drag", false);
+                _dragNDropAnim.SetBool("Drag", false);
                 break;
             case DragDropState.Drop:
-                DragNDropAnim.SetBool("Drag", true);
+                _dragNDropAnim.SetBool("Drag", true);
                 break;
             case DragDropState.Hidden:
-                DragNDropAnim.SetTrigger("Hide");
+                _dragNDropAnim.SetTrigger("Hide");
                 break;
         }
     }
 
     internal void Selected(GridObject collided)
     {
-        foreach(LevelObjectConfiguration config in LevelsObjectsConfig)
+        foreach(LevelObjectConfiguration config in _levelsObjectsConfig)
         {
             if (config.Object == collided)
             {
                 if (config.Quit)
                     Application.Quit();
 
-                LevelManager.Instance.LoadLevel(config.LevelIndex);
+                StartCoroutine(SelectLevel(collided.transform, config.LevelIndex));
             }
         }
+    }
+
+    private IEnumerator SelectLevel(Transform tf, int index)
+    {
+        float start = Time.time;
+        float end = start + .7f;
+        float current = start;
+
+        float startSize = _camera.orthographicSize;
+        Vector3 startPos = _camera.transform.position;
+        Vector3 endPos = tf.position;
+        endPos.z = startPos.z;
+
+        while (current <= end)
+        {
+            current = Time.time;
+            float percentage = Mathf.InverseLerp(start, end, current);
+            _camera.orthographicSize = Mathf.Lerp(startSize, _finalCamSize, percentage);
+            _camera.transform.position = Vector3.Lerp(startPos, endPos, percentage);
+
+            yield return null;
+        }
+
+        LevelManager.Instance.LoadLevel(index);
     }
 
     public enum DragDropState

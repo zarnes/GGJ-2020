@@ -38,8 +38,9 @@ public class ObjectiveManager : MonoBehaviour
         return false;
     }
 
-    public void ValidateObjectives(GridInventory outputInventory)
+    public int ValidateObjectives(GridInventory outputInventory)
     {
+        int points = 0;
         foreach(ObjectiveSlot slot in ObjectivesSlots)
         {
             if (!slot.Occupied)
@@ -51,6 +52,8 @@ public class ObjectiveManager : MonoBehaviour
                 Debug.Log("Completed objective for item " + gObj.name);
                 outputInventory.RemoveObject(gObj, true);
 
+                points += slot.Configuration.Points;
+
                 slot.Feedback.Complete();
                 slot.Occupied = false;
                 slot.Configuration = null;
@@ -60,7 +63,8 @@ public class ObjectiveManager : MonoBehaviour
             }
         }
 
-        outputInventory.FlushItems();
+        points -= outputInventory.FlushItems() * 10;
+        return points;
     }
 
     private void OnDrawGizmosSelected()

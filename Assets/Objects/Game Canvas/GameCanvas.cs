@@ -29,7 +29,10 @@ public class GameCanvas : MonoBehaviour
     public EndPanel EndPanel;
 
     [SerializeField]
-    private Text InformationText;
+    private Text _informationText;
+
+    [SerializeField]
+    private Text _scoreText;
 
     private int lastTimerDisplayed;
 
@@ -46,7 +49,8 @@ public class GameCanvas : MonoBehaviour
 
     public void ValidateOutput()
     {
-        ObjectiveManager.ValidateObjectives(OutputInventory);
+        int points = ObjectiveManager.ValidateObjectives(OutputInventory);
+        GameManager.Instance.AddPoints(points);
     }
 
     public void OpenScroll(ObjectiveConfiguration configuration)
@@ -87,11 +91,17 @@ public class GameCanvas : MonoBehaviour
 
     internal void UpdateInformation(string text)
     {
-        InformationText.text = text;
+        _informationText.text = text;
     }
 
     internal void EndGame(int score, bool haveNextLevel)
     {
         EndPanel.Show(score, haveNextLevel);
+    }
+
+    internal void SetScore(int points)
+    {
+        _scoreText.text = points.ToString();
+        // TODO add feedback
     }
 }

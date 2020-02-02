@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    internal static GameManager Instance;
+
     private LevelConfiguration _levelConfiguration;
 
     [Space]
@@ -20,9 +22,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GridSystem InputGridSystem;
 
+    private int _points;
+
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
+
         _levelConfiguration = LevelManager.Instance.CurrentLevel;
 
         _currentRespawnTime = _levelConfiguration.RespawnTime;
@@ -71,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("TIME OUT");
             gameObject.SetActive(false);
-            GameCanvas.EndGame(345, LevelManager.Instance.HasNextLevel(_levelConfiguration));
+            GameCanvas.EndGame(_points, LevelManager.Instance.HasNextLevel(_levelConfiguration));
         }
     }
 
@@ -86,5 +92,11 @@ public class GameManager : MonoBehaviour
             objFactory.GenerateObject(InputGridSystem, itemConfiguration.Position, itemConfiguration.Object);*/
         
         _nextSpawn = _currentRespawnTime;
+    }
+
+    public void AddPoints(int points)
+    {
+        _points += points;
+        GameCanvas.Instance.SetScore(_points);
     }
 }

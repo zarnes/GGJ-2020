@@ -124,7 +124,8 @@ public class GridObject : MonoBehaviour
             GridManager.Instance.UnregisterDragged();
         }
 
-        initialDragPosition = Vector3.zero;
+        initialDragPosition = transform.position;
+        //initialDragPosition = Vector3.zero;
 
         if (MenuDragItem)
             MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drag);

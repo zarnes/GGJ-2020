@@ -30,10 +30,19 @@ public class RecipeManager : MonoBehaviour
             GridObjectData targetInput = validRecipe.Inputs[output.InputObjectIndex].Object;
 
             GridObject inputObject = null;
+            Vector3 spawnPosition = Vector3.zero;
             if (output.InputObjectIndex == 0)
+            {
+                //inputObject = validRecipe.Inputs[0].Object;
                 inputObject = dragged;
+                spawnPosition = dragged.initialDragPosition;
+            }
             else if (output.InputObjectIndex == 1)
+            {
+                //inputObject = validRecipe.Inputs[1].Object;
                 inputObject = target;
+                spawnPosition = target.transform.position;
+            }
 
             if (inputObject == null)
             {
@@ -42,7 +51,8 @@ public class RecipeManager : MonoBehaviour
             }
             
             // TODO add relative position
-            ObjectFactory.Instance.GenerateObject(inputObject.transform.position, output.Object, true);
+            //ObjectFactory.Instance.GenerateObject(inputObject.initialDragPosition, output.Object, true);
+            ObjectFactory.Instance.GenerateObject(spawnPosition, output.Object, true);
         }
 
         int index = 0;

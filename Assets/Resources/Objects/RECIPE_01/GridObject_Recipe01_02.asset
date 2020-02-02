@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
   m_Name: GridObject_Recipe01_02
   m_EditorClassIdentifier: 
+  Name: Small Potion Bottle (Water and Purpleaves)
   Prefab: {fileID: 8260910040569133456, guid: 0367680dc7b1acc4aa98786b4baa4c0b, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}

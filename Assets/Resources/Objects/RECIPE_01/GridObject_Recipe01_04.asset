@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
   m_Name: GridObject_Recipe01_04
   m_EditorClassIdentifier: 
+  Name: Corked Small Potion Bottle (Granny's Detox))
   Prefab: {fileID: 8260910040569133456, guid: 85f60fffdfb31174a8255b2280038a54, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}

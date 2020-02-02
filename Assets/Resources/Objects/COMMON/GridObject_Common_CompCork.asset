@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9d0c5e1c5224a4e8a56012cf5043e7, type: 3}
-  m_Name: GridObject_Tool_Stove
+  m_Name: GridObject_Common_CompCork
   m_EditorClassIdentifier: 
-  Name: Stove Tool
-  Prefab: {fileID: 8260910040569133456, guid: 06ae155fdd90c2549a16f805a09fda85, type: 3}
+  Name: Cork
+  Prefab: {fileID: 8260910040569133456, guid: 75ebe717bd01fb741b548ec432c4e63a, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 0, y: -1}
-  - {x: 1, y: -1}
   TimeToDestroy: 3
-  IsDestroyable: 0
+  IsDestroyable: 1

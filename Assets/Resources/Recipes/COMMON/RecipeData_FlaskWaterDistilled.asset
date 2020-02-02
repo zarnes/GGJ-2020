@@ -16,10 +16,15 @@ MonoBehaviour:
   - Object: {fileID: 11400000, guid: 6c8fcd0225b847e44ae70c9dc4372856, type: 2}
     Behavior: 1
     CanBeTargetObject: 0
+    TimeToCraft: 0
   - Object: {fileID: 11400000, guid: 912d512d7826214488d55d673b259493, type: 2}
     Behavior: 0
     CanBeTargetObject: 1
+    TimeToCraft: 0
   Outputs:
   - Object: {fileID: 11400000, guid: 01b990c849749cd4b8c2d3a5be19421c, type: 2}
     InputObjectIndex: 0
+    TimeToCraft: 0
     ObjectRelativePosition: {x: 0, y: 0}
+  Accident: {fileID: 11400000, guid: b88b25c8a11a61e4b82e509666ad6b9e, type: 2}
+  AccidentPropability: 0.5

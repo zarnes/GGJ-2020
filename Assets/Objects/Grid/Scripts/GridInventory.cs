@@ -28,8 +28,8 @@ public class GridInventory : MonoBehaviour
         if (!ignoreCollide)
         {
             GridObject collided = Collide(gObj, coords);
-            if (collided != null)
-                return false;
+            /*if (collided != null)
+                return false;*/
         }
         
         gObj.Position = coords;

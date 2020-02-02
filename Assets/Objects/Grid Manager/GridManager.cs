@@ -77,7 +77,7 @@ public class GridManager : MonoBehaviour
         while (tries >= 0)
         {
             --tries;
-            Vector2 randCircle = UnityEngine.Random.insideUnitCircle * Range;
+            Vector2 randCircle = Random.insideUnitCircle * Range;
             Vector3 position = epicenter + new Vector3(randCircle.x, randCircle.y);
             GridSystem grid;
             Vector2Int gCoords;

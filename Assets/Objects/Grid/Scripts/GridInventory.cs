@@ -10,6 +10,7 @@ public class GridInventory : MonoBehaviour
     private List<GridObject> _objects;
     private GridSystem _myGrid;
 
+    // Start is called before the first frame update
     private void Awake()
     {
         _objects = new List<GridObject>();

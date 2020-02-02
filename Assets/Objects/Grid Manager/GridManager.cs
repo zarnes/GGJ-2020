@@ -42,10 +42,7 @@ public class GridManager : MonoBehaviour
     {
         if (_currentDragged != null)
             return false;
-
-        // TODO keep this ? See GD
-        /*if (grid.Type == GridInventory.GridType.Output)
-            return false;*/
+        
 
         _currentDragged = gridObj;
         return true;

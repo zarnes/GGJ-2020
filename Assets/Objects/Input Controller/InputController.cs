@@ -19,6 +19,7 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        return;
         // TODO: remove this logic when other components are setup
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {

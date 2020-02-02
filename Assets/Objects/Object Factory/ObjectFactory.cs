@@ -32,7 +32,7 @@ public class ObjectFactory : MonoBehaviour
     public void GenerateObject(GridSystem gSystem, Vector2Int pos, GridObjectData data, bool ignoreCollide = false)
     {
         GridInventory inventory = gSystem.Inventory;
-        Quaternion sampleOverrideRotation = Quaternion.Euler(-90f, 0f, 0f);
+        Quaternion sampleOverrideRotation = Quaternion.identity;
         Vector3 worldPos = gSystem.GridToWorld(pos);
         GameObject obj = Instantiate(data.Prefab, worldPos, sampleOverrideRotation);
 
@@ -50,7 +50,7 @@ public class ObjectFactory : MonoBehaviour
         if (GridManager.Instance.GetGridCoords(objWorldPosition, out gSysteme, out gPos))
         {
             Vector3 worldGridCellPos = gSysteme.GridToWorld(gPos);
-            Quaternion sampleOverrideRotation = Quaternion.Euler(-90f, 0f, 0f);
+            Quaternion sampleOverrideRotation = Quaternion.identity;
             GameObject obj = Instantiate(data.Prefab, worldGridCellPos, sampleOverrideRotation);
 
             GridObject gObj = obj.GetComponent<GridObject>();

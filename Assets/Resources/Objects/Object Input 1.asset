@@ -15,5 +15,5 @@ MonoBehaviour:
   Prefab: {fileID: 8260910040569133456, guid: 984a9c675ef263d4bbef5381a3bfcbb5, type: 3}
   CoordinatesUsed:
   - {x: 0, y: 0}
-  TimeToDestroy: 3.1
+  TimeToDestroy: 3
   IsDestroyable: 0

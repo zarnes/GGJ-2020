@@ -54,6 +54,7 @@ public class CooldownManager : MonoBehaviour
             {
                 IsFinished = true;
                 OnFinish?.Invoke();
+                gameObject.SetActive(false);
                 //this.enabled = false;
             }
             

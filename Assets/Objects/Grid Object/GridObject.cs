@@ -11,9 +11,14 @@ public class GridObject : MonoBehaviour
     public Vector2Int Position;
     [ReadOnly]
     public float TimeToDestroy;
+    [ReadOnly]
+    public float TimeToRespawn;
 
     [SerializeField]
     private bool MenuDragItem;
+
+    [SerializeField, ReadOnly]
+    private bool IsDragable;
 
     [ReadOnly]
     public Vector3 initialDragPosition;
@@ -22,17 +27,40 @@ public class GridObject : MonoBehaviour
 
     [SerializeField]
     public CooldownManager cdMng;
-
+    
+    [Header("Dont touch this")]
+    
     [Header("Dont touch this")]
     public List<Vector2Int> CoordinatesUsed;
 
-    public void InitializeFromDataFile(GridObjectData data)
+    public void InitializeFromDataFile(GridObjectData data, bool shouldBeOnCooldown = false)
     {
         Data = data;
         CoordinatesUsed = data.CoordinatesUsed;
         TimeToDestroy = data.TimeToDestroy;
+        TimeToRespawn = data.TimeToRespawn;
         gameObject.name = data.name;
         transform.position -= _offset;
+
+        if (shouldBeOnCooldown)
+        {
+            LaunchSpawnCooldownFeedback();
+            IsDragable = false;
+        }
+        else
+            IsDragable = true;
+    }
+
+    public void LaunchSpawnCooldownFeedback()
+    {
+        cdMng.gameObject.SetActive(true);
+        cdMng.Launch(TimeToRespawn);
+        cdMng.OnFinish += MakeDragable;
+    }
+
+    public void MakeDragable()
+    {
+        IsDragable = true;
     }
 
     public void LaunchTrashCooldownFeedback()
@@ -49,6 +77,9 @@ public class GridObject : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!IsDragable)
+            return;
+
         GridSystem gSystem;
         GridManager.Instance.GetGridCoords(transform.position, out gSystem, out _);
         initialDragPosition = transform.position;
@@ -57,6 +88,9 @@ public class GridObject : MonoBehaviour
 
     public void OnMouseDrag()
     {
+        if (!IsDragable)
+            return;
+
         Vector3 mosPos = Input.mousePosition;
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mosPos);
         worldPos.z = 0f;
@@ -69,6 +103,9 @@ public class GridObject : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (!IsDragable)
+            return;
+
         GridSystem gSystem;
         Vector2Int gCoords;
 

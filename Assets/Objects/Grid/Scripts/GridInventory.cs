@@ -117,8 +117,7 @@ public class GridInventory : MonoBehaviour
             
             if (inventory.Type == GridType.Input)
             {
-                print("Duplicte");
-                ObjectFactory.Instance.GenerateObject(GridManager.Instance.GetInputGridSystem(), oldPosition, gObj.Data, true);
+                ObjectFactory.Instance.GenerateObject(GridManager.Instance.GetInputGridSystem(), oldPosition, gObj.Data, true, true);
             }
         }
 

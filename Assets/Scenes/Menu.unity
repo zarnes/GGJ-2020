@@ -1527,6 +1527,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1246726012436398130, guid: 024bd24111a0cd240811cc461cef1feb,
+        type: 3}
+      propertyPath: Levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7992bb73b42a104ea61f19479d12e79,
+        type: 2}
     - target: {fileID: 1246726012436398131, guid: 024bd24111a0cd240811cc461cef1feb,
         type: 3}
       propertyPath: m_Name
@@ -2653,7 +2659,9 @@ MonoBehaviour:
   _offset: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0}
   TimeToDestroy: 0
+  TimeToRespawn: 0
   MenuDragItem: 1
+  IsDragable: 1
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700485890609226}
   CoordinatesUsed:
@@ -2673,7 +2681,9 @@ MonoBehaviour:
   _offset: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0}
   TimeToDestroy: 0
+  TimeToRespawn: 0
   MenuDragItem: 1
+  IsDragable: 1
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700486460352754}
   CoordinatesUsed:
@@ -2693,7 +2703,9 @@ MonoBehaviour:
   _offset: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0}
   TimeToDestroy: 0
+  TimeToRespawn: 0
   MenuDragItem: 1
+  IsDragable: 1
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700486450572950}
   CoordinatesUsed:
@@ -2713,7 +2725,9 @@ MonoBehaviour:
   _offset: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0}
   TimeToDestroy: 0
+  TimeToRespawn: 0
   MenuDragItem: 1
+  IsDragable: 1
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700486524301948}
   CoordinatesUsed:
@@ -2733,7 +2747,9 @@ MonoBehaviour:
   _offset: {x: 0, y: 0, z: 0}
   Position: {x: 0, y: 0}
   TimeToDestroy: 0
+  TimeToRespawn: 0
   MenuDragItem: 1
+  IsDragable: 1
   initialDragPosition: {x: 0, y: 0, z: 0}
   cdMng: {fileID: 707700487309987968}
   CoordinatesUsed:

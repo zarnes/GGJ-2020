@@ -17,7 +17,7 @@ public class GridObject : MonoBehaviour
     [SerializeField]
     private bool MenuDragItem;
 
-    [SerializeField, ReadOnly]
+    [SerializeField]
     private bool IsDragable;
 
     [ReadOnly]
@@ -137,6 +137,12 @@ public class GridObject : MonoBehaviour
     {
         if (GameCanvas.Instance != null)
             GameCanvas.Instance.UpdateInformation(Data.Name);
+    }
+
+    private void OnMouseExit()
+    {
+        if (GameCanvas.Instance != null)
+            GameCanvas.Instance.UpdateInformation("");
     }
 
     private void OnDrawGizmosSelected()

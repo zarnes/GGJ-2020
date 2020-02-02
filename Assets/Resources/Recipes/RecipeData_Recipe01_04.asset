@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: RecipeData_Recipe01_04
   m_EditorClassIdentifier: 
   Inputs:
-  - Object: {fileID: 11400000, guid: 501b3aac03048984abedf7d888ac29d2, type: 2}
-    Behavior: 1
-    CanBeTargetObject: 1
   - Object: {fileID: 11400000, guid: 093117b5617fe734ea654a2befa7e248, type: 2}
     Behavior: 1
     CanBeTargetObject: 0
+  - Object: {fileID: 11400000, guid: 501b3aac03048984abedf7d888ac29d2, type: 2}
+    Behavior: 1
+    CanBeTargetObject: 1
   Outputs:
   - Object: {fileID: 11400000, guid: 4db85623a0054984d8240998da0c4cf5, type: 2}
-    InputObjectIndex: 0
+    InputObjectIndex: 1
     ObjectRelativePosition: {x: 0, y: 0}

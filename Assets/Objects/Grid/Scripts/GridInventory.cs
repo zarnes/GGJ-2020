@@ -81,15 +81,25 @@ public class GridInventory : MonoBehaviour
             return false;
         }
 
+        GridSystem startGrid;
+        GridSystem destinationGrid;
+        GridManager.Instance.GetGridCoords(gObj.initialDragPosition, out startGrid, out _);
+        GridManager.Instance.GetGridCoords(gObj.transform.position, out destinationGrid, out _);
+        if (destinationGrid.Inventory.Type == GridType.Input)
+            return false;
+
         if (!ObjectPositionValid(gObj, coords))
         {
             // TODO feedback not in grid
             return false;
         }
-
+        
         GridObject collided = Collide(gObj, coords);
         if (collided != null)
         {
+            if (startGrid.Inventory.Type == GridType.Input)
+                return false;
+
             Debug.Log("Colliding on end drag with " + collided.name);
             if (InMenu)
             {

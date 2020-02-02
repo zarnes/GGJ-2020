@@ -29,7 +29,10 @@ public class GridObject : MonoBehaviour
 
     [SerializeField]
     public CooldownManager cdMng;
-    
+
+    [SerializeField]
+    private GameObject outlineGameObject;
+
     [Header("Dont touch this")]
     public List<Vector2Int> CoordinatesUsed;
 
@@ -167,12 +170,18 @@ public class GridObject : MonoBehaviour
     {
         if (GameCanvas.Instance != null)
             GameCanvas.Instance.UpdateInformation(Data.Name);
+
+        if (outlineGameObject)
+            outlineGameObject.SetActive(true);
     }
 
     private void OnMouseExit()
     {
         if (GameCanvas.Instance != null)
             GameCanvas.Instance.UpdateInformation("");
+
+        if (outlineGameObject)
+            outlineGameObject.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()

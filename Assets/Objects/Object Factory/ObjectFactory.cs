@@ -42,7 +42,7 @@ public class ObjectFactory : MonoBehaviour
         inventory.AddObject(obj.GetComponent<GridObject>(), pos, ignoreCollide);
     }
 
-    public void GenerateObject(Vector3 objWorldPosition, GridObjectData data, bool ignoreCollide = false)
+    public bool GenerateObject(Vector3 objWorldPosition, GridObjectData data, bool ignoreCollide = false)
     {
         GridSystem gSysteme;
         Vector2Int gPos;
@@ -57,8 +57,9 @@ public class ObjectFactory : MonoBehaviour
             gObj.InitializeFromDataFile(data);
 
             // TODO: Check return value when using this
-            gSysteme.Inventory.AddObject(obj.GetComponent<GridObject>(), gPos, ignoreCollide);
+            return gSysteme.Inventory.AddObject(obj.GetComponent<GridObject>(), gPos, ignoreCollide);
         }
+        return false;
     }
 
     public void DeleteCurrentTrashObject()

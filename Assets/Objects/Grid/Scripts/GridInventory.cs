@@ -183,7 +183,7 @@ public class GridInventory : MonoBehaviour
     {
         return _objects.Find(o => o.Data == data);
     }
-
+    
     public enum GridType
     {
         Input,

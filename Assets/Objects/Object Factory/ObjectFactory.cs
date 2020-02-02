@@ -29,7 +29,7 @@ public class ObjectFactory : MonoBehaviour
         }
     }
 
-    public void GenerateObject(GridSystem gSystem, Vector2Int pos, GridObjectData data, bool ignoreCollide = false)
+    public void GenerateObject(GridSystem gSystem, Vector2Int pos, GridObjectData data, bool ignoreCollide = false, bool shouldBeOnCooldown = false)
     {
         GridInventory inventory = gSystem.Inventory;
         Quaternion sampleOverrideRotation = Quaternion.identity;
@@ -37,7 +37,7 @@ public class ObjectFactory : MonoBehaviour
         GameObject obj = Instantiate(data.Prefab, worldPos, sampleOverrideRotation);
 
         GridObject gObj = obj.GetComponent<GridObject>();
-        gObj.InitializeFromDataFile(data);
+        gObj.InitializeFromDataFile(data, shouldBeOnCooldown);
 
         inventory.AddObject(obj.GetComponent<GridObject>(), pos, ignoreCollide);
     }

@@ -19,6 +19,8 @@ public class GridObject : MonoBehaviour
 
     [SerializeField]
     private bool IsDragable;
+    
+    public bool IsInCrafting;
 
     [ReadOnly]
     public Vector3 initialDragPosition;
@@ -62,6 +64,20 @@ public class GridObject : MonoBehaviour
         cdMng.gameObject.SetActive(true);
         cdMng.Launch(TimeToRespawn);
         cdMng.OnFinish += MakeDragable;
+    }
+
+    public void LaunchCraftCooldownFeedback(float craftDuration)
+    {
+        cdMng.gameObject.SetActive(true);
+        cdMng.Launch(craftDuration);
+        IsInCrafting = true;
+        cdMng.OnFinish += FinishCrafting;
+    }
+
+    public void FinishCrafting()
+    {
+        IsInCrafting = false;
+        cdMng.Stop();
     }
 
     public void MakeDragable()

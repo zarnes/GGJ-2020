@@ -28,7 +28,6 @@ public class InputController : MonoBehaviour
 
                     if (gMng.FindGridWithObject(obj) != gMng.GetInputGridSystem().Inventory)
                     {
-                        obj.LaunchTrashCooldownFeedback();
                         ObjectFactory.Instance.BeginTrashObject(obj);
                     }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,9 @@ public class RecipeManager : MonoBehaviour
     {
         Recipe validRecipe = GetRecipeWithInputs(dragged, target);
         if (validRecipe == null)
+            return false;
+
+        if (dragged.IsInCrafting || target.IsInCrafting)
             return false;
 
         foreach(RecipeOutput output in validRecipe.Outputs)
@@ -78,6 +82,11 @@ public class RecipeManager : MonoBehaviour
             {
                 gObj.transform.position = gObj.initialDragPosition;
                 placedBackObj = true;
+
+                if (Math.Abs(input.TimeToCraft) > Mathf.Epsilon)
+                {
+                    gObj.GetComponent<GridObject>().LaunchCraftCooldownFeedback(input.TimeToCraft);
+                }
             }
             ++index;
         }

@@ -16,3 +16,5 @@ MonoBehaviour:
   ScrollInfos: {fileID: 5861293256194002289, guid: d2206d311a966dd4aa7b19c5ea7ee8f7,
     type: 3}
   Points: 100
+  FeedbackSprite: {fileID: 21300000, guid: e2e629003bd62524780d81109be10476, type: 3}
+  SpriteScale: 1.5

@@ -87,12 +87,32 @@ public class MenuManager : MonoBehaviour
         Vector3 endPos = tf.position;
         endPos.z = startPos.z;
 
+        bool soundA = false;
+        bool soundB = false;
+        bool soundC = false;
+
         while (current <= end)
         {
             current = Time.time;
             float percentage = Mathf.InverseLerp(start, end, current);
             _camera.orthographicSize = Mathf.Lerp(startSize, _finalCamSize, percentage);
             _camera.transform.position = Vector3.Lerp(startPos, endPos, percentage);
+
+            if (percentage >= .0f && !soundA)
+            {
+                MusicManager.Instance.PlaySound("Book A");
+                soundA = true;
+            }
+            else if (percentage >= .3f && !soundB)
+            {
+                MusicManager.Instance.PlaySound("Book B");
+                soundB = true;
+            }
+            else if (percentage >= .6f && !soundC)
+            {
+                MusicManager.Instance.PlaySound("Book C");
+                soundC = true;
+            }
 
             yield return null;
         }

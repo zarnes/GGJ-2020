@@ -85,7 +85,7 @@ public class GridInventory : MonoBehaviour
         GridSystem destinationGrid;
         GridManager.Instance.GetGridCoords(gObj.initialDragPosition, out startGrid, out _);
         GridManager.Instance.GetGridCoords(gObj.transform.position, out destinationGrid, out _);
-        if (destinationGrid.Inventory.Type == GridType.Input)
+        if (destinationGrid == null || destinationGrid.Inventory.Type == GridType.Input)
             return false;
 
         if (!ObjectPositionValid(gObj, coords))

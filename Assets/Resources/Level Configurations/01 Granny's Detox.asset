@@ -16,6 +16,7 @@ MonoBehaviour:
   RespawnTime: 15
   TimeDecreasePerPerfect: 3
   MinimumRespawnTime: 5
+  AllowFirstInfiniteRecipe: 1
   ItemsInStock:
   - Position: {x: 0, y: 4}
     Object: {fileID: 11400000, guid: 005d7257dc8573c4698b4cfcc8702d53, type: 2}

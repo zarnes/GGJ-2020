@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f26cdc57b04b164e89ec462738d6a2c, type: 3}
-  m_Name: New Recipe Data
+  m_Name: RecipeData_Recipe01_01
   m_EditorClassIdentifier: 
   Inputs:
-  - Object: {fileID: 11400000, guid: c54046af07e48784f9c844d0234d7dde, type: 2}
-    Behavior: 0
-    CanBeTargetObject: 0
-  - Object: {fileID: 11400000, guid: 310ab181dce63e641bfa95cf112c83ec, type: 2}
+  - Object: {fileID: 11400000, guid: 5f129c513ede6c84d829314730958a32, type: 2}
     Behavior: 1
+    CanBeTargetObject: 0
+  - Object: {fileID: 11400000, guid: 005d7257dc8573c4698b4cfcc8702d53, type: 2}
+    Behavior: 0
     CanBeTargetObject: 1
   Outputs:
-  - Object: {fileID: 11400000, guid: 20ab56dac44cd0e4a85393d15a9629c6, type: 2}
-    InputObjectIndex: 1
+  - Object: {fileID: 11400000, guid: cf5337554ddcc2f44b9ba4c5f0f474d8, type: 2}
+    InputObjectIndex: 0
     ObjectRelativePosition: {x: 0, y: 0}
-  - Object: {fileID: 11400000, guid: 20ab56dac44cd0e4a85393d15a9629c6, type: 2}
-    InputObjectIndex: 1
-    ObjectRelativePosition: {x: 1, y: 0}

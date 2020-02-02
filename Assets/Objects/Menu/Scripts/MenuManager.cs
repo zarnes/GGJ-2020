@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,15 +14,28 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GridSystem DragGrid;
 
+    [SerializeField]
+    [Space]
+    private GridSystem LevelsGrid;
+    [SerializeField]
+    private List<LevelObjectConfiguration> LevelsObjectsConfig;
+
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
 
+        LevelsGrid.Inventory.InMenu = DragGrid.Inventory.InMenu = true;
+
         DragGrid.Inventory.AddObject(MenuDrag, Vector2Int.zero, true);
+
+        foreach (LevelObjectConfiguration config in LevelsObjectsConfig)
+        {
+            LevelsGrid.Inventory.AddObject(config.Object, config.Position, true);
+        }
     }
 
-    public void TestDragNDropUnderstood(GridSystem gSystem)
+        public void TestDragNDropUnderstood(GridSystem gSystem)
     {
         if (gSystem != DragGrid)
             DragDrop(DragDropState.Hidden);
@@ -43,10 +57,33 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    internal void Selected(GridObject collided)
+    {
+        foreach(LevelObjectConfiguration config in LevelsObjectsConfig)
+        {
+            if (config.Object == collided)
+            {
+                if (config.Quit)
+                    Application.Quit();
+
+                LevelManager.Instance.LoadLevel(config.LevelIndex);
+            }
+        }
+    }
+
     public enum DragDropState
     {
         Drag,
         Drop,
         Hidden
     }
+}
+
+[System.Serializable]
+public class LevelObjectConfiguration
+{
+    public GridObject Object;
+    public int LevelIndex;
+    public bool Quit;
+    public Vector2Int Position;
 }

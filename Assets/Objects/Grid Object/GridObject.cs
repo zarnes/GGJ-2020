@@ -7,7 +7,6 @@ public class GridObject : MonoBehaviour
     [SerializeField]
     private Vector3 _offset;
     
-    internal List<Vector2Int> CoordinatesUsed;
     [ReadOnly]
     public Vector2Int Position;
     [ReadOnly]
@@ -29,6 +28,11 @@ public class GridObject : MonoBehaviour
     [SerializeField]
     public CooldownManager cdMng;
     
+    [Header("Dont touch this")]
+    
+    [Header("Dont touch this")]
+    public List<Vector2Int> CoordinatesUsed;
+
     public void InitializeFromDataFile(GridObjectData data, bool shouldBeOnCooldown = false)
     {
         Data = data;
@@ -128,7 +132,7 @@ public class GridObject : MonoBehaviour
 
     private void OnMouseOver()
     {
-        GameCanvas.Instance?.UpdateInformation(name);
+        GameCanvas.Instance?.UpdateInformation(Data.Name);
     }
 
     private void OnDrawGizmosSelected()

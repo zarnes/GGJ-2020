@@ -979,6 +979,11 @@ PrefabInstance:
       propertyPath: GameCanvas
       value: 
       objectReference: {fileID: 49453422255482077}
+    - target: {fileID: 8081755179470078516, guid: 87dafca6b5a38f743935a279b2b25c8d,
+        type: 3}
+      propertyPath: InputGridSystem
+      value: 
+      objectReference: {fileID: 238597826}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87dafca6b5a38f743935a279b2b25c8d, type: 3}
 --- !u!1001 &7113916398191595887

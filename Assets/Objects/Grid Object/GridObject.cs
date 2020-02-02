@@ -59,6 +59,7 @@ public class GridObject : MonoBehaviour
     public void MakeDragable()
     {
         IsDragable = true;
+        cdMng.Stop();
     }
 
     public void LaunchTrashCooldownFeedback()

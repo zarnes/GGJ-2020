@@ -36,6 +36,7 @@ public class CooldownManager : MonoBehaviour
     public void Stop()
     {
         IsStarted = false;
+        IsFinished = false;
         value = 0f;
         EndTime = 0f;
     }

@@ -11,6 +11,8 @@ public class ObjectiveFeedback : MonoBehaviour
     {
         _configuration = configuration;
         name = "Objective : " + configuration.Object.name;
+        transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = configuration.FeedbackSprite;
+        transform.GetChild(0).GetChild(0).localScale = Vector3.one * configuration.SpriteScale;
     }
 
     void OnMouseUp()

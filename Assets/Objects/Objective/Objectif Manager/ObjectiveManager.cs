@@ -41,6 +41,7 @@ public class ObjectiveManager : MonoBehaviour
     public int ValidateObjectives(GridInventory outputInventory)
     {
         int points = 0;
+        int objectivesCompleted = 0;
         foreach(ObjectiveSlot slot in ObjectivesSlots)
         {
             if (!slot.Occupied)
@@ -53,6 +54,7 @@ public class ObjectiveManager : MonoBehaviour
                 outputInventory.RemoveObject(gObj, true);
 
                 points += slot.Configuration.Points;
+                ++objectivesCompleted;
 
                 slot.Feedback.Complete();
                 slot.Occupied = false;
@@ -61,6 +63,19 @@ public class ObjectiveManager : MonoBehaviour
 
                 --ActiveObjectives;
             }
+        }
+
+        switch(objectivesCompleted)
+        {
+            case 2:
+                points = (int)((float)points * 1.15f);
+                break;
+            case 3:
+                points = (int)((float)points * 1.5f);
+                break;
+            case 4:
+                points = (int)((float)points * 2f);
+                break;
         }
 
         points -= outputInventory.FlushItems() * 10;

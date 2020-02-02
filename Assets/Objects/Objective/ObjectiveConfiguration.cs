@@ -8,4 +8,6 @@ public class ObjectiveConfiguration : ScriptableObject
     public GridObjectData Object;
     public GameObject ScrollInfos;
     public int Points = 100;
+    public Sprite FeedbackSprite;
+    public float SpriteScale = 1;
 }

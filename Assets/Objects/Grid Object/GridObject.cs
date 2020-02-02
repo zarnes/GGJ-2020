@@ -95,7 +95,8 @@ public class GridObject : MonoBehaviour
 
     private void OnMouseOver()
     {
-        GameCanvas.Instance?.UpdateInformation(Data.Name);
+        if (GameCanvas.Instance != null)
+            GameCanvas.Instance.UpdateInformation(Data.Name);
     }
 
     private void OnDrawGizmosSelected()

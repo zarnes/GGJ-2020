@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,17 @@ public class LevelManager : MonoBehaviour
 
         if (CurrentLevel == null)
             CurrentLevel = Levels[0];
+    }
+
+    internal void LoadNextLevel()
+    {
+        int currentIndex = Levels.IndexOf(CurrentLevel) + 1;
+        LoadLevel(currentIndex);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene("Play Scene");
     }
 
     public void LoadLevel(int index)

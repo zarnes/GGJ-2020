@@ -20,6 +20,21 @@ public class EndPanel : MonoBehaviour
         _anim = GetComponent<Animator>();
     }
 
+    public void Restart()
+    {
+        LevelManager.Instance.ReloadLevel();
+    }
+
+    public void NextLevel()
+    {
+        LevelManager.Instance.LoadNextLevel();
+    }
+
+    public void BackToMenu()
+    {
+        LevelManager.Instance.LoadMenu();
+    }
+
     public void Show(int score, bool haveNextLevel)
     {
         if (!haveNextLevel)

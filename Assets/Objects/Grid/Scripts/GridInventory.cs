@@ -47,16 +47,20 @@ public class GridInventory : MonoBehaviour
         return removed;
     }
 
-    internal void FlushItems()
+    internal int FlushItems()
     {
+        int count = _objects.Count;
         Debug.Log("Flushing " + _objects.Count + " items in grid inventory " + name, gameObject);
+
         if (_objects.Count <= 0)
-            return;
+            return 0;
 
         for (int i = _objects.Count - 1; i >= 0; --i)
         {
             RemoveObject(_objects[i], true);
         }
+
+        return count;
     }
 
     public bool StartMove(GridObject gObj)

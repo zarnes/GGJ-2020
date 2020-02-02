@@ -28,6 +28,9 @@ public class GameCanvas : MonoBehaviour
 
     public EndPanel EndPanel;
 
+    [SerializeField]
+    private Text InformationText;
+
     private int lastTimerDisplayed;
 
     private void Awake()
@@ -80,6 +83,11 @@ public class GameCanvas : MonoBehaviour
             TimerAnimator.SetTrigger("Wobble");
 
         TimerText.color = TimerColor.Evaluate(percentage);
+    }
+
+    internal void UpdateInformation(string text)
+    {
+        InformationText.text = text;
     }
 
     internal void EndGame(int score, bool haveNextLevel)

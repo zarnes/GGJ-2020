@@ -81,7 +81,7 @@ public class GridObject : MonoBehaviour
         }
         else
         {
-            transform.position = initialDragPosition - _offset;
+            transform.position = initialDragPosition;
             GridManager.Instance.UnregisterDragged();
         }
 
@@ -89,6 +89,11 @@ public class GridObject : MonoBehaviour
 
         if (MenuDragItem)
             MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drag);
+    }
+
+    private void OnMouseOver()
+    {
+        GameCanvas.Instance?.UpdateInformation(name);
     }
 
     private void OnDrawGizmosSelected()

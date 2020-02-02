@@ -2044,6 +2044,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   EndPanel: {fileID: 2173326500811971239}
+  InformationText: {fileID: 3129495534363443168}
 --- !u!1 &9172587458450560802
 GameObject:
   m_ObjectHideFlags: 0

@@ -91,6 +91,11 @@ public class GridObject : MonoBehaviour
             MenuManager.Instance.DragDrop(MenuManager.DragDropState.Drag);
     }
 
+    private void OnMouseOver()
+    {
+        GameCanvas.Instance?.UpdateInformation(name);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.gray;
